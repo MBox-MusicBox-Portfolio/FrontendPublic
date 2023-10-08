@@ -1,0 +1,83 @@
+.music-block {
+    width: 100%;
+    height: 60px;
+    
+    background-color: #6083F2;
+
+    position: fixed;
+    z-index: $ui-index-6;
+
+    bottom: 0;
+}
+
+.m-info-block {
+    margin-left: 30px;
+}
+
+.favor-block {
+    margin-left: 132px;
+}
+
+.img-favor {
+    width: 19px;
+}
+
+.bttn-favor {
+    margin-top: 3px;
+}
+
+.text-name {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 19.5px;
+}
+
+.text-author {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17.07px;
+}
+
+.progress-block {
+    width: 1013px;
+    height: 3px;
+
+    margin-top: 10px;
+
+    background-color: white;
+
+    z-index: $ui-index-2;
+    .value-prg {
+        width: 369.83px;
+        height: 3px;
+        background-color: #2B3385;
+    }
+}
+
+.pl-bttn {
+    margin-left: 30px;
+}
+
+.img-pl-size {
+    width: 16px;
+    height: 16px;
+}
+
+.img-frame-size {
+    width: 25px;
+}
+
+.volume-block {
+    width: 87px;
+}
+
+.img-vol {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+.size-block-1 { margin-top: 10px; }
+.size-block-2 { margin-top: 16px; }
+.size-block-3 { margin-top: 10px; }

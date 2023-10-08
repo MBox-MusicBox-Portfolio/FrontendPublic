@@ -1,0 +1,15 @@
+@mixin text-style($fs, $fw, $lh) {
+    font-family: $montserrat;
+    font-size: $fs;
+    font-weight: $fw;
+    
+    line-height: $lh;
+    letter-spacing: 0em;
+}
+
+@mixin music-template($wh, $hg) {
+    max-width: $wh;
+    width: $wh;
+    height: $hg;
+    background: $light-bl-color;
+}

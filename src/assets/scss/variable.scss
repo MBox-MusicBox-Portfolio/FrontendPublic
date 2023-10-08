@@ -1,0 +1,39 @@
+
+// Colors
+$light-color: #FFFFFF;
+$light-gr-color: #E8E8E8;
+$light-bl-color: #F8F9FC;
+
+$gray-light-bl-color: #ABB1CA;
+
+$blue-light-color: #B0C4DE;
+$blue2-color: #6083F2;
+$blue1-color: #404899;
+$blue-color: #2B3385;
+
+$red-color: #B71212;
+
+// Themes
+$dark-theme: black;
+$light-theme: white;
+
+// Shrifts
+$montserrat-ialic: Montserrat-Italic;
+$montserrat: Montserrat;
+
+// z-index
+$ui-index-1: 1; // Для напалзающих элементов от 0 до 2
+$ui-index-2: 2; // Для напалзающих элементов
+$ui-index-3: 3; // Для масок
+$ui-index-4: 4; // Для сайдбаров
+$ui-index-5: 5; // Для модалок
+$ui-index-6: 6; // Для элементов, перекрывающих всё (Для черезвычяйных случаев)
+
+// Breackpoint
+
+$breackpoint_xxxxl: 1600px;
+$breackpoint_xxxl: 1400px;
+$breackpoint_xxl: 1200px;
+$breackpoint_xl: 1024px;
+$breackpoint_md: 767px;
+$breackpoint_sm: 576px;

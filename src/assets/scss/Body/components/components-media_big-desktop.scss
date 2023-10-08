@@ -1,0 +1,89 @@
+@include desktop_1 {
+    /* Music */
+
+    .music-template { @include music-template(359px, 378px); }
+    .img-mt {
+        width: 278px;
+        height: 279px;
+        margin-bottom: 20px;
+    }
+
+    /* Music */
+
+    /* Author */
+    
+    .music-template-author {
+        @include music-template(359px, 378px);
+        margin-right: 20px;
+    }
+
+    .img-ut { margin-top: 120px; }
+
+    /* Author */
+
+    /* Genre */
+    
+    .genre-tp {
+        width: 179px;
+        height: 179px;
+    }
+
+    /* Genre */
+
+    /* Group list */
+
+    .block-group-tp { width: 69%; }
+    .text-group-tp-name { @include text-style(13px, 600, normal); }
+    .text-group-tp { @include text-style(10px, 400, normal); }
+
+    /* Group list */
+
+    /* Favorite */
+
+    .text-favorite-template { @include text-style(12px, 400, normal); }
+
+    /* Favorite */
+}
+
+@include desktop_2 {
+        /* Music */
+
+        .music-template { @include music-template(259px, 290px); }
+        .img-mt {
+            width: 230px;
+            height: 179px;
+            margin-bottom: 20px;
+        }
+    
+        /* Music */
+    
+        /* Author */
+        
+        .music-template-author {
+            @include music-template(259px, 290px);
+            margin-right: 20px;
+        }
+    
+        .img-ut { margin-top: 70px; }
+    
+        /* Author */
+    
+        /* Genre */
+        
+        .genre-tp {
+            width: 149px;
+            height: 149px;
+        }
+
+        .text-genres-tp { @include text-style(17px, 600, normal); }
+    
+        /* Genre */
+    
+        /* Group list */
+    
+        .block-group-tp { width: 70%; }
+        .text-group-tp-name { @include text-style(11px, 600, normal); }
+        .text-group-tp { @include text-style(8px, 400, normal); }
+    
+        /* Group list */
+}

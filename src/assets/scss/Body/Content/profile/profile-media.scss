@@ -1,0 +1,23 @@
+@include desktop_1 {
+    .profile-card {
+        width: 300px;
+
+        .card__text-name { @include text-style(16px, 600, normal); }
+        .card__text { @include text-style(14px, 400, normal); }
+        .card__text-index { @include text-style(14px, 600, normal); }
+    }
+
+    .favorite-block {
+        width: 70%;
+    }
+}
+
+@include desktop_2 {
+    .profile-card {
+        margin-bottom: 170px;
+    }
+
+    .favorite-block {
+        display: none;
+    }
+}

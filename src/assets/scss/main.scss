@@ -1,0 +1,168 @@
+@import 'shrifts.scss';
+@import 'variable.scss';
+@import 'mixin.scss';
+@import 'keyframes.scss';
+
+@import 'Body/Sidebar/sidebar.scss';
+@import 'Body/Content/profile/profile.scss';
+@import 'Body/Content/auth.scss';
+@import 'Body/Content/music.scss';
+@import 'Body/components/components.scss';
+@import 'Body/Content/homeContent.scss';
+@import 'MusicPlayer/musicPlayer.scss';
+
+
+@import 'media_breakpoint.scss';
+@import 'Body/Sidebar/sidebar-media.scss';
+@import 'Body/components/components-media_big-desktop.scss';
+@import 'Body/Content/profile/profile-media.scss';
+
+
+/* Global Style */
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body { background: $light-color; }
+
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {list-style: none;}
+a {text-decoration: none;}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background: $blue-light-color;
+}
+::-webkit-scrollbar-thumb {
+    background: $light-gr-color;
+}
+
+.content-container-fluid {
+    height: auto;
+    
+    position: relative;
+    
+    margin-bottom: 150px;
+    margin-left: 365px;
+    
+    background-color: white;
+}
+
+.fixed-container-gl {
+    width: 100%;
+    height: 100px;
+  
+    background: white;
+  
+    display: flex;
+    position: fixed;
+  
+    z-index: $ui-index-3;
+    bottom: 0;
+}
+
+/* Global Style */
+
+/* Search Global Component Style */
+
+.text-control-fogot {
+    @include text-style(12px, 300, 16px);
+}
+
+.invalid-feedback {
+    text-align: left;
+    @include text-style(10px, 300, 16px);
+}
+
+/* Search Global Component Style*/
+
+/* Button Global Style */
+.bttn-sign {
+    width: 213px;
+    height: 40px;
+    
+    background: $blue-color;
+    border: transparent;
+    border-radius: 40px;
+
+    color: white;
+
+    transition: .3s ease-in;
+    @include text-style(16px, 700, 16px);
+    &:hover {
+        transition: .5s ease-out;
+        background: $blue1-color;
+    }
+}   
+/* Button Global Style */
+
+/* Group */
+
+.text-post {
+    margin-left: 20px;
+    @include text-style(24px, 600, 44px);
+}
+
+.group-height { height: 240px;}
+
+.div__add-artist {
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    position: relative;
+    
+    margin-left: 124px;
+    margin-top: 545px;
+
+    background: $light-bl-color;
+    
+    padding-top: 25px;
+
+    .add__image {
+        width: 42,5px;
+        height: 42.5px;
+    }
+}
+
+/* Group */
+
+/* Player */
+
+.pl-bttn, .bttn-favor {
+    border: transparent;
+    background: transparent;
+}
+
+/* Player */
+
+.md-m {
+    width: 450px;
+    margin-top: 55px;
+}
+
+.lb-fstyle {@include text-style(14px, 500, 20px);}
+
+
+.ml-20 { margin-left: 20px; }
+.ml-30 { margin-left: 30px; }
+.ml-70 { margin-left: 70px; }
+.ml-149 { margin-left: 149px; }
+.ml-130 { margin-left: 130px; }
+.mr-20 { margin-right: 20px; }
+.mt-30 { margin-top: 30px; }
+.mt-20 { margin-top: 20px; }
+.mt-10 { margin-top: 10px; } 
+.ml-70 { margin-left: 70px; }
+.mb-89 { margin-bottom: 89; }
+.mb-30 { margin-bottom: 30px;}
+.mr-32 { margin-right: 32px; }
