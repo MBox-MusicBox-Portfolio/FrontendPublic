@@ -8,7 +8,6 @@ export async function RegisterAcc(username, email, password, birthday) {
       Name: username,
       Email: email,
       Password: password,
-      Birthday: birthday
     })
     return request;
 }

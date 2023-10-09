@@ -501,32 +501,173 @@
 /* Button 2 */
 
 .modal-margin {
-  margin: 100px;
+  margin-top: 50px;
 }
-/* Sign In */
 
-
-
-/* Sign In */
-
-/* Sign Up */
+/* Sign */
 
 .d-container {
   width: 1416px;
   height: 893px;
 
+  border-radius: 10px;
   background: white;
+
   display: flex;
-  flex-direction: column;
   
   position: relative;
   pointer-events: auto;
 
   .container_image-welcome {
-  
+    width: 430px;
+
+    .image__background {
+      width: 430px;
+      height: 100%;
+      position: absolute;
+      z-index: 0;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    .image__background-left {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    .container__content {
+      z-index: 1;
+      position: relative;
+
+      .content__width {
+        width: 305px;
+      }
+
+      .content__text-welcom {
+        @include text-style(32px, 800, 39px);
+        text-align: center;
+
+        margin-top: 315px;
+        margin-bottom: 30px;
+      }
+
+      .content__text-description {
+        @include text-style(18px, 400, 22px);
+      }
+
+      .content__button {
+        background: transparent;
+
+        width: 213px;
+        height: 40px;
+
+        margin-top: 80px;
+
+        border: 2px solid $blue-color;
+        border-radius: 40px;
+
+        color: black;
+        @include text-style(16px, 700, 19.5px);
+
+        transition: 0.3s ease-in;
+
+        &:hover {
+          transition: 0.4s ease-out;
+          background: $blue1-color;
+          color: white;
+        }
+      }
+    }
   }
+
+  .container__form {
+    margin: 298px auto;
+    width: 445px;
+    height: 300px;
+  
+    .form__text-create {
+      margin-bottom: 30px;
+      text-align: center;
+      @include text-style(22px, 800, 39px);
+    }
+
+    .form__text-fogot {
+      text-align: end;
+      @include text-style(13px, 300, normal);
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+  
+      .form-control {
+        border: transparent;
+        border-radius: 7px;
+        background: $light-bl-color;
+  
+        padding-left: 35px;
+        text-align: left;
+  
+        @include text-style(15px, 400, 22px);
+  
+        transition: 0.3 ease-in;
+        &:focus {
+          transition: 0.5 ease-out;
+          color: rgb(24, 182, 58);
+  
+          border: 1px solid rgb(24, 182, 58);
+          box-shadow: 10px 10px 10px transparent;
+        }
+  
+        &:invalid {
+          transition: 0.5 ease-out;
+  
+          color: $red-color;
+  
+          border: 1px solid red;
+        }
+  
+        &::placeholder {
+          color: #abb1ca;
+          text-align: left;
+          @include text-style(13px, 400, 22px);
+        }
+      }
+  
+      .form__image {
+        width: 16px;
+  
+        position: absolute;
+        padding-top: 9px;
+        left: 10px;
+      }
+  
+      .form__image-birthday {left: 420px;}
+      .form__control-birthday {padding-left: 12px;}
+    
+      .form__button {
+        width: 213px;
+        height: 40px;
+        
+        background: $blue-color;
+        border: transparent;
+        border-radius: 40px;
+    
+        color: white;
+    
+        transition: .3s ease-in;
+        @include text-style(16px, 700, 16px);
+        &:hover {
+            transition: .5s ease-out;
+            background: $blue1-color;
+        }
+    }  
+    }
+  }
+  
 }
 
 
 
-/* Sign Up */
+/* Sign */

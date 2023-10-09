@@ -41,19 +41,23 @@
             <div v-else class='ml-27'>
                 <div class="mb-60">
                     <p class='text-message'>Create your first Playlist!</p>
-                    <ButtonComponent_2Vue :flag="false"  name="Create Playlist" class='mt-10'/>
+                    <ButtonComponent_2Vue :flag="false" @click="OpenModalIn()" name="Create Playlist" class='mt-10'/>
                 </div>
                 <div>
                     <p class='text-message'>Subscribe to your favorite artists</p>
-                    <ButtonComponent_2Vue :flag="false"  name="Subscribe" class='mt-10'/>
+                    <ButtonComponent_2Vue :flag="false" @click="OpenModalUp()" name="Subscribe" class='mt-10'/>
                 </div>
             </div>
         </div>
+        <SignInComponent/>
+        <SignUpComponent/>
     </section>
 </template>
 
 <script>
 import ButtonComponent_2Vue from '../../components/Button/ButtonComponent_2.vue';
+import SignInComponent from '../../components/modals/SignInComponent.vue';
+import SignUpComponent from '../../components/modals/SignUpComponent.vue';
 import LibraryComponents from '../../components/template/LibraryComponents.vue';
 import { GetItem } from '../../lib/Service/LocalStorage/localstorage';
 
@@ -129,16 +133,24 @@ export default {
     },  
     components: {
         LibraryComponents,
-        ButtonComponent_2Vue
+        ButtonComponent_2Vue,
+        SignInComponent,
+        SignUpComponent
     },
     methods: {
         check() {
-        if (GetItem("JWTKey") === null) {
-            return false;
-        } else {
-            return true;
+            if (GetItem("JWTKey") === null) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        OpenModalUp() {
+            SignUpComponent.methods.OpenModal();
+        },
+        OpenModalIn() {
+            SignInComponent.methods.OpenModal();
         }
-        }
-  }
+    }
 }
 </script>

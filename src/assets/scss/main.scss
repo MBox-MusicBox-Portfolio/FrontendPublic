@@ -84,26 +84,6 @@ a {text-decoration: none;}
 
 /* Search Global Component Style*/
 
-/* Button Global Style */
-.bttn-sign {
-    width: 213px;
-    height: 40px;
-    
-    background: $blue-color;
-    border: transparent;
-    border-radius: 40px;
-
-    color: white;
-
-    transition: .3s ease-in;
-    @include text-style(16px, 700, 16px);
-    &:hover {
-        transition: .5s ease-out;
-        background: $blue1-color;
-    }
-}   
-/* Button Global Style */
-
 /* Group */
 
 .text-post {
