@@ -107,11 +107,9 @@ export default {
                         <div class="invalid-feedback">{{ errors.retypePassword }}</div>
                     </div>
                     <div class="form-group d-flex justify-content-center mt-4">
-                        <router-link to="/SignUp/verify-email">
-                            <button class="bttn-sign" :disabled="isSubmitting">
+                      <button class="bttn-sign" :disabled="isSubmitting">
                                 Sign Up
-                            </button>
-                        </router-link>
+                      </button>
                     </div>
                 </Form>
             </div>

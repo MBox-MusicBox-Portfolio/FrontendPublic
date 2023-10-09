@@ -11,6 +11,7 @@
     const sendAuth = AuthorizationStore();
     async function onSubmit(data) {
         sendAuth.authorization(data);
+        
     }
 </script>
 
@@ -19,13 +20,6 @@
         <div class="block-sign_register" data-aos="fade-left" data-aos-delay="150">
             <div class="mb-4">
                 <h4 class="text-create_acc">Sign In to MusicBox</h4>
-                <!--
-                    <div class="block_sign_social mt-3 mb-3">
-                    <img src="../../assets/icons/mbox_facebook.png" class="img-sign-facebook">
-                    <img src="../../assets/icons/mbox_google.png" class="img-sign-google">
-                </div>
-                <p class="text-sign-desc">or use email for registration</p>
-                -->
             </div>
             <div class="create-wrap">
                 <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">

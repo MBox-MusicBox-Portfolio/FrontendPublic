@@ -1,5 +1,6 @@
 import axios from "axios";
 import SourceJson from "./Source.json";
+import jwt_decode from "jwt-decode";
 
 export async function RegisterAcc(username, email, password) {
   const request = await axios
@@ -8,14 +9,14 @@ export async function RegisterAcc(username, email, password) {
       Email: email,
       Password: password,
     })
-    console.log(SourceJson.register);
     console.log(request);
     return request;
 }
 
 export async function AuthorizationAcc(email, password) {
+  // new Date
   const request = await axios
-    .post(SourceJson.login, {
+    .post('http://localhost/api/auth/login', {
       Email: email,
       Password: password,
     });
@@ -28,4 +29,9 @@ export async function GetGroupList() {
     
   });
   return request;
+}
+
+export async function decodeJwt(token) {
+  let decoded = jwt_decode(token);
+  return JSON.stringify(decoded);
 }

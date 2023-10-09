@@ -3,8 +3,7 @@ import { defineStore } from "pinia";
 export const GroupStore = defineStore('group-store', {
     state: () => {
         return {
-            id: String,      // JWT
-            status: String, //
+            
         }
     },
     actions: {
@@ -33,6 +32,5 @@ export const GroupStore = defineStore('group-store', {
         PublicMusic(data) {
 
         },
-        
     }
 });

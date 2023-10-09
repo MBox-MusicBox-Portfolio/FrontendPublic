@@ -1,28 +1,20 @@
 import { defineStore } from "pinia";
-import localStorage from '../Service/LocalStorage/localstorage';
+import { GetItem } from "../Service/LocalStorage/localstorage";
+import { decodeJwt } from "../Service/Axios/axios";
 
-export const ProfileStore = defineStore('', {
-    state: () => {
-        return {
-            id: String, // JWT
-        }
+export const ProfileStore = defineStore("", {
+  state: () => {
+    return {
+      username: String,
+      img_url: String,
+      img_background: String,
+    };
+  },
+  actions: {
+    async get_profile_component() {
+      let decode = await decodeJwt(GetItem("JWTKey"));
+      let decode_parse = JSON.parse(decode);
+      this.username = decode_parse.Name;
     },
-    actions: {
-        async CheckUser() {
-            const jwt = localStorage.GetItem('JWTKey');
-            if (jwt === undefined) {
-                this.SetId('false');
-                console.log("false")
-            }else {
-                this.SetId('true');
-                console.log('true');
-            }
-        },
-        async SetId(id) {
-            this.id = id;
-        },
-        async GetId() {
-            return this.id;
-        }
-    }
+  },
 });

@@ -27,7 +27,7 @@
                     <img class='search__image' src="../../assets/icons/mbox_arrow_down.png">
                 </div>
             </div>
-            <div v-if="check()" class="ml-20">
+            <div v-if="check()" class='ml-20'>
                 <div v-for="item in testUser" :key="item">
                 <LibraryComponents 
                 :img_url="item.img_url" 
@@ -38,13 +38,24 @@
                 />
                 </div>
             </div>
+            <div v-else class='ml-27'>
+                <div class="mb-60">
+                    <p class='text-message'>Create your first Playlist!</p>
+                    <ButtonComponent_2Vue :flag="true" link="sign-up" name="Create Playlist" class='mt-10'/>
+                </div>
+                <div>
+                    <p class='text-message'>Subscribe to your favorite artists</p>
+                    <ButtonComponent_2Vue :flag="true" link="sign-in" name="Subscribe" class='mt-10'/>
+                </div>
+            </div>
         </div>
     </section>
 </template>
 
 <script>
+import ButtonComponent_2Vue from '../../components/Button/ButtonComponent_2.vue';
 import LibraryComponents from '../../components/template/LibraryComponents.vue';
-import {GetItem} from '../../lib/Service/LocalStorage/localstorage';
+import { GetItem } from '../../lib/Service/LocalStorage/localstorage';
 
 export default {
     data() {
@@ -117,7 +128,8 @@ export default {
         }
     },  
     components: {
-        LibraryComponents
+        LibraryComponents,
+        ButtonComponent_2Vue
     },
     methods: {
         check() {

@@ -1,5 +1,30 @@
 {
-    "register": "http://localhost/api/auth/register",
-    "login": "http://localhost/api/auth/login",
-    "GroupList": "http://localhost/api/"
+    "Auth": {
+        "register": "http://localhost/api/auth/register",
+        "login": "http://localhost/api/auth/login",
+        "logout": "http://localhost/api/auth/logout"
+    },
+    "Public": {
+        "news": "http://localhost/api/public/news",
+        "news_id": "http://localhost/api/public/news/",
+
+        "playlist": "http://localhost/api/public/playlist",
+        "playlist_id": "http://localhost/api/public/playlist/",
+        "playlist_idp": "http://localhost/api/public/playlist/",
+
+        "songs": "http://localhost/api/public/songs",
+        "songs_id": "http://localhost/api/public/songs/",
+
+        "user": "http://localhost/api/public/user",
+        "user_id": "http://localhost/api/public/user/",
+
+        "band_aplication": "http://localhost/api/public/application",
+        "band_aplication_id": "http://localhost/api/public/application/",
+        "band_aplication_idup": "http://localhost/api/public/application/",
+        "band_aplication_idsp": "http://localhost/api/public/application",
+
+        "albums": "http://localhost/api/public/albums",
+        "albums_id": "http://localhost/api/public/albums/",
+        "albums_idp": "http://localhost/api/public/albums/"
+    }
 }
