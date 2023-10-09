@@ -82,7 +82,6 @@
         </div>
       </div>
     </div>
-    <CreatePost/>
   </section>
 </template>
 
@@ -90,6 +89,8 @@
 import MusicTemplate from "../../../components/template/MusicTemplate.vue";
 import UserTemplate from "../../../components/template/AuthorTemplate.vue";
 import SeeAllTemplate from "../../../components/template/SeeAllTemplate.vue";
+
+
 
 export default {
   data() {

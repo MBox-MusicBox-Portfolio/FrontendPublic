@@ -23,21 +23,23 @@
           </button>
         </div>
         <button v-else class='button-image-link m-0 d-flex'>
-            <router-link to="/sign-up">
-              <img class='button__image' src="../../assets/icons/mbox_account_error.png">
-            </router-link>
-            <p class='button__text ms-2'>Sign Up</p>
+          <img class='button__image' @click="OpenModal()" src="../../assets/icons/mbox_account_error.png">
+          <p class='button__text ms-2'>Sign Up</p>
         </button>
       </div>
     </div>
+    <SignUpComponent/>
   </section>
 </template>
 
 <script>
 import {GetItem} from '../../lib/Service/LocalStorage/localstorage';
-import {GetCookie, SetCoockie} from '../../lib/Service/Cookies/cookies';
+import SignUpComponent from '../../components/modals/SignUpComponent.vue';
 
 export default {
+  components: {
+    SignUpComponent
+  },
   methods: {
     check() {
       if (GetItem("JWTKey") === null) {
@@ -45,11 +47,10 @@ export default {
       } else {
         return true;
       }
-    }    
+    },
+    OpenModal() {
+      SignUpComponent.methods.OpenModal();
+    }
   }
 }
 </script>
-
-<style>
-
-</style>

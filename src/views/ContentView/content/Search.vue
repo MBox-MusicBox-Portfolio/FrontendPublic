@@ -47,7 +47,7 @@
 import GenresTemplateVue from "../../../components/template/GenresTemplate.vue";
 import MusicTemplate from "../../../components/template/MusicTemplate.vue";
 import UserTemplate from "../../../components/template/AuthorTemplate.vue";
-import SearchComponent from "../../../components/search/SearchComponent.vue";
+import SearchComponent from "../../../components/input/SearchComponent.vue";
 import SeeAllTemplate from "../../../components/template/SeeAllTemplate.vue";
 
 export default {

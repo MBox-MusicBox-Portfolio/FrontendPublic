@@ -41,11 +41,11 @@
             <div v-else class='ml-27'>
                 <div class="mb-60">
                     <p class='text-message'>Create your first Playlist!</p>
-                    <ButtonComponent_2Vue :flag="true" link="sign-up" name="Create Playlist" class='mt-10'/>
+                    <ButtonComponent_2Vue :flag="false"  name="Create Playlist" class='mt-10'/>
                 </div>
                 <div>
                     <p class='text-message'>Subscribe to your favorite artists</p>
-                    <ButtonComponent_2Vue :flag="true" link="sign-in" name="Subscribe" class='mt-10'/>
+                    <ButtonComponent_2Vue :flag="false"  name="Subscribe" class='mt-10'/>
                 </div>
             </div>
         </div>
@@ -142,7 +142,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

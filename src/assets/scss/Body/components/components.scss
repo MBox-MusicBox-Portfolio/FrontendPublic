@@ -500,6 +500,9 @@
 
 /* Button 2 */
 
+.modal-margin {
+  margin: 100px;
+}
 /* Sign In */
 
 
@@ -507,6 +510,22 @@
 /* Sign In */
 
 /* Sign Up */
+
+.d-container {
+  width: 1416px;
+  height: 893px;
+
+  background: white;
+  display: flex;
+  flex-direction: column;
+  
+  position: relative;
+  pointer-events: auto;
+
+  .container_image-welcome {
+  
+  }
+}
 
 
 

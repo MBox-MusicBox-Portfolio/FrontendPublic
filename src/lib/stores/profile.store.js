@@ -12,9 +12,11 @@ export const ProfileStore = defineStore("", {
   },
   actions: {
     async get_profile_component() {
-      let decode = await decodeJwt(GetItem("JWTKey"));
-      let decode_parse = JSON.parse(decode);
-      this.username = decode_parse.Name;
+      if (GetItem("JWTKey")) {
+        let decode = await decodeJwt(GetItem("JWTKey"));
+        let decode_parse = JSON.parse(decode);
+        this.username = decode_parse.Name;
+      }
     },
   },
 });

@@ -11,7 +11,6 @@
     const sendAuth = AuthorizationStore();
     async function onSubmit(data) {
         sendAuth.authorization(data);
-        
     }
 </script>
 
