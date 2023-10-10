@@ -9,48 +9,48 @@
       src="../../../../assets/icons/no_usage_images/bg-group.png"
       class="image-background"
     />
-    <div class='d-flex mb-89 ml-20'>
-      <div class='group-height'>
-        <div class='d-flex'>
-          <div class='profile-card'>
-            <div class='d-flex justify-content-center'>
-              <img
-                src="../../../../assets/icons/no_usage_images/user-avatar1.png"
-              />
+    <div class="d-flex mb-89 ml-20">
+      <div class="group-height">
+        <div class="d-flex">
+          <div class="profile-card">
+            <div class="d-flex justify-content-center">
+              <img :src="groupList.avatar" class="card__image"/>
             </div>
-            <div class='text-center mt-20'>
-              <p class='card__text-name'>Lil Peep</p>
-              <p class='card__text mt-1'>
-                This is a group in memory of Gustav <br />
-                Elijah Åhr (Lil Peep) He was such an <br />
-                inspiration to so many people and <br />
-                deserves to be remembered. Please <br />
-                keep post respectful and remember <br />
-                this is about Gus‼️
+            <div class="text-center mt-20">
+              <p class="card__text-name">{{ groupList.name }}</p>
+              <p class="card__text card__width">
+                {{ groupList.description }}
               </p>
-              <p class='card__text mt-20'>
-                <span class='card__text-index mr-20'>811</span> Publication
+              <p class="card__text mt-20">
+                <span class="card__text-index mr-20">0</span>
+                Publication
               </p>
-              <p class='card__text mt-10'>
-                <span class='card__text-index mr-20'>173k</span> Followers
+              <p class="card__text mt-10">
+                <span class="card__text-index mr-20">{{ groupList.countFollowers }}</span>
+                Followers
               </p>
-              <p class='card__text mt-10'>Created 11 Feb 2021</p>
-              <button class='card__button-edit mt-20'>Edit profile</button>
+              <p class="card__text mt-10">{{ groupList.createdAt }}</p>
+              <!-- <button class="card__button-edit mt-20">Edit profile</button> -->
             </div>
           </div>
         </div>
       </div>
-      <div class='d-flex'>
-        <GroupArtistTemplate />
-        <div class='div__add-artist d-flex justify-content-center'>
-          <img @click="AddArtist()"
-            class='add__image'
+      <div class="d-flex">
+        <div class="block-dop-info ml-20">
+          <div class="d-flex w-100">
+            <p class="text-anim">Artist</p>
+          </div>
+          <GroupArtistTemplate :img_url="groupList.avatar" :name="groupList.name"/>
+        </div>
+        <!--<div class="div__add-artist d-flex justify-content-center">
+          <img
+            class="add__image"
             src="../../../../assets/icons/mbox_add_artist.png"
           />
-        </div>
+        </div>-->
       </div>
     </div>
-    <div class='ml-20'>
+    <div class="ml-20">
       <div>
         <SeeAllTemplate
           name="Albums"
@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-    <p class='text-post'>Posts</p>
+    <p class="text-post">Posts</p>
     <PostTemplate
       username="Lil Peep"
       avatar="../../../../../src/assets/icons/no_usage_images/user-avatar1.png"
@@ -141,6 +141,7 @@ import ButtonComponent_1Vue from "../../../../components/Button/ButtonComponent_
 import CreatePost from "../../../../components/modals/CreatePostComponent.vue";
 import PostTemplate from "../../../../components/group/PostTemplate.vue";
 import AddArtist from "../../../../components/modals/AddArtistComponent.vue";
+import { GroupStore } from '../../../../lib/stores/group.store';
 
 export default {
   data() {
@@ -155,6 +156,7 @@ export default {
       image2: [
         "../../../../../src/assets/icons/no_usage_images/poster_group.png",
       ],
+      groupList: [],
     };
   },
   components: {
@@ -173,7 +175,15 @@ export default {
     },
     AddArtist() {
       AddArtist.methods.OpenModal();
+    },
+    async Group() {
+      const gl = await GroupStore();
+      const value = await gl.Group(this.$route.params.groupId);
+      this.groupList = value[0];
     }
   },
+  mounted() {
+    this.Group();
+  }
 };
 </script>

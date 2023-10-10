@@ -2,9 +2,11 @@ import axios from "axios";
 import SourceJson from "./Source.json";
 import jwt_decode from "jwt-decode";
 
-export async function RegisterAcc(username, email, password, birthday) {
+/* Auth */
+
+export async function RegisterAcc(username, email, password) {
   const request = await axios // new Date
-    .post(SourceJson.register, {
+    .post(SourceJson.Auth.register, {
       Name: username,
       Email: email,
       Password: password,
@@ -14,22 +16,32 @@ export async function RegisterAcc(username, email, password, birthday) {
 
 export async function AuthorizationAcc(email, password) {
   const request = await axios
-    .post('http://localhost/api/auth/login', {
+    .post(SourceJson.Auth.login, {
       Email: email,
       Password: password,
     });
   return request;
 }
 
-export async function GetGroupList() {
-  const request = await axios
-  .get(SourceJson.GroupList, {
-    
-  });
-  return request;
-}
+/* Auth */
 
 export async function decodeJwt(token) {
   let decoded = jwt_decode(token);
   return JSON.stringify(decoded);
 }
+
+/* Group */
+
+export async function GroupList(index, size) {
+  const request = await axios
+  .get(SourceJson.Public.band + "?PageIndex=" + index + "&PageSize=" + size);
+  return request;
+}
+
+export async function Join(user, group) {
+  const request = await axios.put(SourceJson.Public.band_join + "/" + group + "/user/" + user);
+
+  return request;
+}
+
+/* Group */

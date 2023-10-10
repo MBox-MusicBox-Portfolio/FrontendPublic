@@ -32,7 +32,7 @@ const router = createRouter({
           component: GroupList
         },
         {
-          path: 'group',
+          path: 'group/:groupId/:groupName',
           name: 'group',
           component: Group
         },

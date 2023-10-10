@@ -1,36 +1,56 @@
 import { defineStore } from "pinia";
+import { GroupList, Join, decodeJwt } from "../Service/Axios/axios";
+import { GetItem } from "../Service/LocalStorage/localstorage";
 
-export const GroupStore = defineStore('group-store', {
-    state: () => {
-        return {
-            
-        }
+export const GroupStore = defineStore("group-store", {
+  actions: {
+    async GroupList() {
+      const request = await GroupList(1, 5);
+      const value = request.data.value[0];
+      const groupList = [];
+      console.log(value);
+      for (let i = 0; i < value.length; i++) {
+        const groupValue = value[i];
+        const group = {
+          id: groupValue.id,
+          name: groupValue.name,
+          avatar: groupValue.avatar,
+          producer: groupValue.producer,
+          description: groupValue.fullInfo,
+          countFollowers: groupValue.countFollowers,
+        };
+        groupList.push(group);
+      }
+      return groupList;
     },
-    actions: {
-        CreateGroup(data) {
-            const createDataForm = {
-                "Name": data.name,
-                "MusicianArr": data.musician,
-                "Description": data.desc
-            }
-        },
-        GroupList() {
-            
-        },
-        Join(data) {
+    async Join(id) {
+      if (GetItem("JWTKey")) {
+        const decode = await decodeJwt(GetItem("JWTKey"));
+        const decode_parse = JSON.parse(decode);
+        await Join(decode_parse.Id, id);
+      }
+    },
+    async Group(id) {
+      const request = await GroupList(1, 5);
+      const value = request.data.value[0];
+      const groupList = [];
 
-        },
-        
-        CreatePost(data) {
-            const postDataForm = {
-                "Title": data.title,
-                "Description": data.desc,
-                "Flag": data.flag,
-                "Source": data.source
-            }
-        },
-        PublicMusic(data) {
-
-        },
-    }
+      for (let i = 0; i < value.length; i++) {
+        const groupValue = value[i];
+        if (groupValue.id === id) {
+            const group = {
+                id: groupValue.id,
+                name: groupValue.name,
+                avatar: groupValue.avatar,
+                producer: groupValue.producer,
+                description: groupValue.fullInfo,
+                countFollowers: groupValue.countFollowers,
+                createdAt: groupValue.createdAt,
+            };
+            groupList.push(group);
+        }
+      }
+      return groupList;
+    },
+  },
 });

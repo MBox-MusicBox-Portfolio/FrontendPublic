@@ -6,7 +6,7 @@
 
 .profile-card {
     width: 359px;
-    height: 412px;
+    height: 490px;
     
     top: 120px;
     padding-top: 30px;
@@ -22,8 +22,21 @@
     .card__text { @include text-style(16px, 400, normal); }
     .card__text-index { @include text-style(16px, 600, normal); }
     
+    .card__width {
+        margin: 0 auto;
+        width: 300px;
+    }
+    
+    .card__image {
+        margin-top: 50px;
+        width: 100px;
+        height: 101px;
+        border-radius: 5px;
+    }
+
     .card__button-edit {
-        width: 107px;
+        margin-top: 23.5px;
+        width: 131px;
         height: 22px;
         
         color: white;

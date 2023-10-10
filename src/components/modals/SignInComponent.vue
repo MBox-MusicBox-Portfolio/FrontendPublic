@@ -17,6 +17,7 @@ async function onSubmit(data) {
 <script>
 import { Modal } from "../../../node_modules/bootstrap/dist/js/bootstrap.esm";
 
+
 export default {
   methods: {
     OpenModal() {

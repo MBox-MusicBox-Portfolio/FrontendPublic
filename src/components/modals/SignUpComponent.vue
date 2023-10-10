@@ -145,5 +145,6 @@ export default {
         </div>
       </div>
     </div>
+    <SignInComponent/>
   </div>
 </template>
