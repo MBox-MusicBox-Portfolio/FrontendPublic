@@ -1,9 +1,9 @@
 <script setup>
-import { RegisterStore } from "../../lib/stores/registration.store";
+import { AuthStore } from "../../lib/stores/auth.store";
 import * as Yup from "yup";
 import { Form, Field } from "vee-validate";
 
-const schema = Yup.object().shape({
+const schema_sign_up = Yup.object().shape({
   name: Yup.string().required("Name is required"),
   email: Yup.string().email().required("Email is required"),
   birthday: Yup.string().required("Birthday is required"),
@@ -11,9 +11,19 @@ const schema = Yup.object().shape({
   retypePassword: Yup.string().required("Retype password is requires"),
 });
 
-const sendRegister = RegisterStore();
-async function onSubmit(data) {
-  sendRegister.registration(data);
+const schema_sign_in = Yup.object().shape({
+  email: Yup.string().required("Email is required"),
+  password: Yup.string().required("Password is required"),
+});
+
+const as = AuthStore();
+
+async function onSubmitUp(data) {
+  as.SignUp(data);
+}
+
+async function onSubmitIn(data) {
+  as.SignIn(data);
 }
 </script>
 
@@ -21,19 +31,103 @@ async function onSubmit(data) {
 import { Modal } from "../../../node_modules/bootstrap/dist/js/bootstrap.esm";
 
 export default {
+  data() {
+    return {
+      isSign: Boolean
+    }
+  },
   methods: {
-    OpenModal() {
-      let modalShow = new Modal(document.getElementById("modal-edit"), {});
-      modalShow.show();
+    OpenModal(isSign) {
+      this.isSign = isSign;
+      let test = new Modal(document.getElementById('modal-sign'), {
+        backdrop: true,
+      });
+      test.show();
     },
+    SetSign(isSign) {
+      this.isSign = isSign;
+      console.log(this.isSign);
+    }
   },
 };
 </script>
 
 <template>
-  <div class="modal" id="modal-edit">
-    <div class="modal-margin d-flex justify-content-center">
-      <div class="d-container">
+  <div class="modal" id="modal-sign">
+    <div class="modal-dialog modal-xl modal-margin d-flex justify-content-center">
+      <!-- Sign In -->
+      <div class="d-container" v-if="isSign === true">
+        <div class="container__form" data-aos="fade-left" data-aos-delay="150">
+          <h4 class="form__text-create">Sign In to MusicBox</h4>
+          <div>
+            <Form
+              @submit="onSubmitIn"
+              :validation-schema="schema_sign_in"
+              v-slot="{ errors, isSubmitting }"
+            >
+              <div class="form-group">
+                <img
+                  src="../../assets/icons/mbox_email.png"
+                  class="form__image"
+                />
+                <Field
+                  name="email"
+                  type="email"
+                  class="form-control"
+                  :placeholder="'Email'"
+                  :class="{ 'is-invalid': errors.email }"
+                />
+                <div class="invalid-feedback">{{ errors.email }}</div>
+              </div>
+              <div class="form-group mt-10">
+                <img
+                  src="../../assets/icons/mbox_password.png"
+                  class="form__image"
+                />
+                <Field
+                  name="password"
+                  type="password"
+                  class="form-control"
+                  :placeholder="'Password'"
+                  :class="{ 'is-invalid': errors.password }"
+                />
+                <div class="invalid-feedback">{{ errors.password }}</div>
+              </div>
+              <div>
+                <p class="form__text-fogot">forgot your password?</p>
+              </div>
+              <div class="form-group d-flex justify-content-center mt-4">
+                <button class="form__button" :disabled="isSubmitting">
+                  Sign In
+                </button>
+              </div>
+            </Form>
+            <p class="text-danger">{{ as.error_message }}</p>
+          </div>
+        </div>
+        <div class="container_image-welcome">
+          <img
+            src="../../assets/icons/mbox_background_1.png"
+            class="image__background"
+          />
+          <div class="container__content text-center">
+            <div class="d-flex justify-content-center">
+              <div class="content__width">
+                <p class="content__text-welcom text-white">Hello, Friend!</p>
+                <p class="content__text-description text-white">
+                  Enter your personal details and start listen music with us
+                </p>
+              </div>
+            </div>
+            <div>
+              <button class="content__button text-white" @click="SetSign(false)">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      <!-- Sign Up -->
+      <div class="d-container" v-else>
         <div class="container_image-welcome">
           <img
             src="../../assets/icons/mbox_background.png"
@@ -49,20 +143,21 @@ export default {
               </div>
             </div>
             <div>
-              <button class="content__button">Sign In</button>
+              <button class="content__button" @click="SetSign(true)">Sign In</button>
             </div>
           </div>
         </div>
         <div
-          class="container__form" style="margin: 232px auto;"
+          class="container__form"
+          style="margin: 232px auto"
           data-aos="fade-left"
           data-aos-delay="150"
         >
           <h4 class="form__text-create">Create Account</h4>
           <div>
             <Form
-              @submit="onSubmit"
-              :validation-schema="schema"
+              @submit="onSubmitUp"
+              :validation-schema="schema_sign_up"
               v-slot="{ errors, isSubmitting }"
             >
               <div class="form-group">
@@ -141,10 +236,10 @@ export default {
                 </button>
               </div>
             </Form>
+            <p class="text-danger">{{ as.error_message }}</p>
           </div>
         </div>
       </div>
     </div>
-    <SignInComponent/>
   </div>
 </template>

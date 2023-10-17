@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { GroupList, Join, decodeJwt } from "../Service/Axios/axios";
+import { GroupList, Join, decodeJwt, MyJoinGroup } from "../Service/Axios/axios";
 import { GetItem } from "../Service/LocalStorage/localstorage";
 
 export const GroupStore = defineStore("group-store", {
@@ -52,5 +52,13 @@ export const GroupStore = defineStore("group-store", {
       }
       return groupList;
     },
+    async MyJoinGroup(index, size) {
+      if (GetItem("JWTKey")) {
+        const decode = await decodeJwt(GetItem("JWTKey"));
+        const decode_parse = JSON.parse(decode);
+        const request = await MyJoinGroup(decode_parse.Id, index, size);
+        return request;
+      }
+    }
   },
 });

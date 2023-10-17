@@ -7,7 +7,6 @@
     />
     <SearchComponent :placeholder="'Search group'"></SearchComponent>
     <div class="mt-5">
-      <!-- List -->
       <GroupTemplate
         v-for="group in groupList"
         :key="group.id"
@@ -27,6 +26,7 @@ import SearchComponent from "../../../../components/input/SearchComponent.vue";
 import GroupTemplate from "../../../../components/group/GroupTemplate.vue";
 import ButtonComponent_1 from "../../../../components/Button/ButtonComponent_1.vue";
 import { GroupStore } from "../../../../lib/stores/group.store";
+import { MyJoinGroup } from '../../../../lib/Service/Axios/axios';
 
 export default {
   data() {
@@ -53,6 +53,11 @@ export default {
         params: { groupId: groupId, groupName: groupName },
       });
     },
+    async MyJoinGroup() {
+      const gl = GroupStore();
+      const request = await gl.MyJoinGroup(1,99);
+      return request;
+    }
   },
   mounted() {
     this.FethGroupList();

@@ -23,22 +23,22 @@
           </button>
         </div>
         <button v-else class='button-image-link m-0 d-flex'>
-          <img class='button__image' @click="OpenModal()" src="../../assets/icons/mbox_account_error.png">
+          <img class='button__image' @click="OpenModal" src="../../assets/icons/mbox_account_error.png">
           <p class='button__text ms-2'>Sign Up</p>
         </button>
       </div>
     </div>
-    <SignUpComponent/>
+    <SignComponent/>
   </section>
 </template>
 
 <script>
 import {GetItem} from '../../lib/Service/LocalStorage/localstorage';
-import SignUpComponent from '../../components/modals/SignUpComponent.vue';
+import SignComponent from '../../components/modals/SignComponent.vue';
 
 export default {
   components: {
-    SignUpComponent
+    SignComponent
   },
   methods: {
     check() {
@@ -49,7 +49,7 @@ export default {
       }
     },
     OpenModal() {
-      SignUpComponent.methods.OpenModal();
+      SignComponent.methods.OpenModal();
     }
   }
 }
