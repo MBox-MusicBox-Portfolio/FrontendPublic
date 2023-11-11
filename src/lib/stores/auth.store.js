@@ -31,7 +31,7 @@ export const AuthStore = defineStore("auth", {
         })
         .catch((error) => {
           console.log(error);
-          if (error.response.status === 403) {
+          if (error.response.status === 404) {
             if (error.response.data.value.email != undefined)
               this.error_message = error.response.data.value.email;
             if (error.response.data.value.password != undefined)

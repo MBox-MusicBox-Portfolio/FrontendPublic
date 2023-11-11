@@ -143,7 +143,6 @@ export default {
             }
         },
         OpenModal(test) {
-            console.log(test);
             SignComponent.methods.SetSign(test);
             SignComponent.methods.OpenModal();
         },

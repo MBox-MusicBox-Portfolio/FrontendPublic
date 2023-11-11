@@ -17,7 +17,7 @@ const router = createRouter({
       component: BodyView,
       children: [
         {
-          path: 'home',
+          path: '/',
           name: 'home',
           component: Home
         },
@@ -32,7 +32,7 @@ const router = createRouter({
           component: GroupList
         },
         {
-          path: 'group/:groupId/:groupName',
+          path: 'group/:groupId',
           name: 'group',
           component: Group
         },

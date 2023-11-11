@@ -3,7 +3,7 @@
     <div class='d-sidebar-block'>
       <div class="sidebar-navigation-block" data-aos="fade-down" data-aos-delay="150">
         <button class='button-image-link ms-0 mb-1 d-flex'>
-          <router-link to="/home" >
+          <router-link to="/" >
             <img class='button__image' src="../../assets/icons/mbox_home.png" >
           </router-link>
           <p class='button__text ms-2'>Home</p>

@@ -10,22 +10,22 @@ export async function decodeJwt(token) {
 /* Auth */
 
 export async function Register(username, email, password) {
-  const request = await axios // new Date
+  const response = await axios // new Date
     .post(SourceJson.Auth.register, {
       Name: username,
       Email: email,
       Password: password,
     })
-    return request;
+    return response;
 }
 
 export async function Auth(email, password) {
-  const request = await axios
+  const response = await axios
     .post(SourceJson.Auth.login, {
       Email: email,
       Password: password,
     });
-  return request;
+  return response;
 }
 
 /* Auth */
@@ -33,21 +33,18 @@ export async function Auth(email, password) {
 /* Group */
 
 export async function GroupList(index, size) {
-  const request = await axios
-  .get(SourceJson.Public.band + "?PageIndex=" + index + "&PageSize=" + size);
-  return request;
+  const response = await axios.get(SourceJson.Public.band + "?PageIndex=" + index + "&PageSize=" + size);
+  return response;
 }
 
-// http://localhost/api/public/albums?PageIndex=1&PageSize=1
-
 export async function Join(user, group) {
-  const request = await axios.put(SourceJson.Public.band_join + "/" + group + "/user/" + user);
-  return request;
+  const response = await axios.put(SourceJson.Public.band_join + "/" + group + "/user/" + user);
+  return response;
 }
 
 export async function MyJoinGroup(user, index, size) {
-  const request = await axios.get(SourceJson.Public.band_user + user + "/user/band?PageIndex=" + index + "&PageSize=" + size);
-  return request;
+  const response = await axios.get(SourceJson.Public.band_user + user + "/user/bands?PageIndex=" + index + "&PageSize=" + size);
+  return response;
 }
 
 /* Group */
@@ -55,8 +52,8 @@ export async function MyJoinGroup(user, index, size) {
 /* Playlist */
 
 export async function Playlist() {
-  const request = await axios.get(SourceJson.Public.playlist);
-  return request;
+  const response = await axios.get(SourceJson.Public.playlist);
+  return response;
 }
 
 /* Playlist */
