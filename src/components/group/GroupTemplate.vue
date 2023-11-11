@@ -16,8 +16,11 @@
             <p class="text-group-tp ms-4 text-primary-emphasis">see more</p>
           </div>
         </div>
-        <button class="bttn-group-tp mt-4 text-white">
+        <button v-if="flag" class="bttn-group-tp mt-4 text-white">
           Join
+        </button>
+        <button v-else class="bttn-group-tp mt-4 text-white">
+          Open
         </button>
       </div>
     </div>
@@ -32,6 +35,7 @@ export default {
     creator_name: String,
     description: String,
     img_url: String,
+    flag: Boolean,
   },
   methods: {
   }

@@ -503,7 +503,8 @@
 /* Button 2 */
 
 .modal-margin {
-  margin-top: 50px;
+  max-width: 1416px;
+  margin-top: 50px auto;
 }
 
 /* Sign */
@@ -669,7 +670,5 @@
   }
   
 }
-
-
 
 /* Sign */

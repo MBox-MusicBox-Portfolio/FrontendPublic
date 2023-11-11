@@ -6,6 +6,11 @@
     },
     "Public": {
         "band": "http://localhost/api/public/bands",
-        "band_join": "http://localhost/api/public/bands/band"
+        "band_join": "http://localhost/api/public/bands/band",
+        "band_user": "http://localhost/api/public/users/",
+
+        "playlist":"http://localhost/api/public/playlists",
+
+        "":""
     }
 }

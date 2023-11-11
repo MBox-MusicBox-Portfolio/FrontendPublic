@@ -9,8 +9,6 @@ export function RemoveItem(key) {
 
 export function GetItem(key) {
     var value = localStorage.getItem(key);
-    if (value !== null) {
-        return value;
-    }
+    if (value !== null) return value;
     return null;
 }
