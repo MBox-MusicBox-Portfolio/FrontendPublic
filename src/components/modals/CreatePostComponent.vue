@@ -6,13 +6,13 @@
           <div class='mb-1 d-flex justify-content-between'>
             <p class='post__text-create'>Create new post</p>
             <img
-              src="../../assets/icons/mbox_exit.png"
+              src="@Images/mbox_exit.png"
               class='post__image-exit'
             />
           </div>
           <div class='d-flex align-items-center'>
             <img
-              src="../../assets/icons/no_usage_images/user-avatar1.png"
+              src="@Images/no_usage_images/user-avatar1.png"
               class='post__image-avatar'
             />
             <p class='post__text-name'>Lil Peep</p>
@@ -34,12 +34,12 @@
             <div>
               <img
                 class='post__image'
-                src="../../assets/icons/mbox_add_image.png"
+                src="@Images/mbox_add_image.png"
               />
-              <img class='post__image' src="../../assets/icons/mbox_gif.png" />
+              <img class='post__image' src="@Images/mbox_gif.png" />
               <img
                 class='post__image'
-                src="../../assets/icons/mbox_add_emoji.png"
+                src="@Images/mbox_add_emoji.png"
               />
             </div>
             <button class='post__button' type="submit">Create</button>

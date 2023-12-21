@@ -1,7 +1,7 @@
 <template>
   <section class="pb-5">
     <img
-      src="../../../assets/icons/no_usage_images/bg-home.png"
+      src="@Images/no_usage_images/bg-home.png"
       class="img-bg-random"
     />
     <div class="block-image-rnd d-flex">
@@ -87,9 +87,9 @@
 </template>
 
 <script>
-import MusicTemplate from "../../../components/template/MusicTemplate.vue";
-import UserTemplate from "../../../components/template/AuthorTemplate.vue";
-import SeeAllTemplate from "../../../components/template/SeeAllTemplate.vue";
+import MusicTemplate from   "@Components/template/MusicTemplate.vue";
+import UserTemplate from    "@Components/template/AuthorTemplate.vue";
+import SeeAllTemplate from  "@Components/template/SeeAllTemplate.vue";
 
 export default {
   data() {

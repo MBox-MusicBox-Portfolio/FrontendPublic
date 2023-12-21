@@ -1,6 +1,6 @@
 <script setup>
-import { AuthStore } from "../../lib/stores/auth.store";
-import * as Yup from "yup";
+import { AuthStore } from   "@Stores/auth.store";
+import * as Yup from        "yup";
 import { Form, Field } from "vee-validate";
 
 const schema_sign_up = Yup.object().shape({
@@ -67,7 +67,7 @@ export default {
             >
               <div class="form-group">
                 <img
-                  src="../../assets/icons/mbox_email.png"
+                  src="@Images/mbox_email.png"
                   class="form__image"
                 />
                 <Field
@@ -81,7 +81,7 @@ export default {
               </div>
               <div class="form-group mt-10">
                 <img
-                  src="../../assets/icons/mbox_password.png"
+                  src="@Images/mbox_password.png"
                   class="form__image"
                 />
                 <Field
@@ -107,7 +107,7 @@ export default {
         </div>
         <div class="container_image-welcome">
           <img
-            src="../../assets/icons/mbox_background_1.png"
+            src="@Images/mbox_background_1.png"
             class="image__background"
           />
           <div class="container__content text-center">
@@ -130,7 +130,7 @@ export default {
       <div class="d-container" v-else>
         <div class="container_image-welcome">
           <img
-            src="../../assets/icons/mbox_background.png"
+            src="@Images/mbox_background.png"
             class="image__background image__background-left"
           />
           <div class="container__content text-center">
@@ -162,7 +162,7 @@ export default {
             >
               <div class="form-group">
                 <img
-                  src="../../assets/icons/mbox_account.png"
+                  src="@Images/mbox_account.png"
                   class="form__image"
                 />
                 <Field
@@ -176,7 +176,7 @@ export default {
               </div>
               <div class="form-group mt-10">
                 <img
-                  src="../../assets/icons/mbox_email.png"
+                  src="@Images/mbox_email.png"
                   class="form__image"
                 />
                 <Field
@@ -190,7 +190,7 @@ export default {
               </div>
               <div class="form-group mt-10">
                 <img
-                  src="../../assets/icons/mbox_calendar.png"
+                  src="@Images/mbox_calendar.png"
                   class="form__image form__image-birthday"
                 />
                 <Field
@@ -204,7 +204,7 @@ export default {
               </div>
               <div class="form-group mt-10">
                 <img
-                  src="../../assets/icons/mbox_password.png"
+                  src="@Images/mbox_password.png"
                   class="form__image"
                 />
                 <Field
@@ -218,7 +218,7 @@ export default {
               </div>
               <div class="form-group mt-10">
                 <img
-                  src="../../assets/icons/mbox_password.png"
+                  src="@Images/mbox_password.png"
                   class="form__image"
                 />
                 <Field

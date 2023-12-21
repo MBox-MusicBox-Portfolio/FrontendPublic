@@ -47,8 +47,8 @@
 export default {};
 </script>
 <script setup>
-import { GroupStore } from "../../../../lib/stores/group.store";
-import * as Yup from "yup";
+import { GroupStore } from  "@Stores/group.store";
+import * as Yup from        "yup";
 import { Form, Field } from "vee-validate";
 
 const gs = GroupStore();

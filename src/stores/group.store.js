@@ -4,8 +4,8 @@ import {
   Join,
   decodeJwt,
   MyJoinGroup,
-} from "../Service/Axios/axios";
-import { GetItem } from "../Service/LocalStorage/localstorage";
+} from                      "@Utils/axios";
+import { GetItem } from     "@Utils/localstorage";
 
 export const GroupStore = defineStore("group-store", {
   actions: {

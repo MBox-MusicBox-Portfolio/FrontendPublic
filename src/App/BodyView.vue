@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import Content from './ContentView/Content.vue';
-import Music from './MusicView/Music.vue';
-import Sidebar from './SidebarView/Sidebar.vue';
-import SidebarNav from './SidebarView/SidebarNav.vue';
-import ProfileComponents from '../components/profile/ProfileComponents.vue';
-import { GetItem } from '../lib/Service/LocalStorage/localstorage';
+import Content from           '@Pages/Content.vue';
+import Music from             '@Pages/Music/Music.vue';
+import Sidebar from           '@Pages/Sidebar/Sidebar.vue';
+import SidebarNav from        '@Pages/Sidebar/SidebarNav.vue';
+import ProfileComponents from '@Components/profile/ProfileComponents.vue';
+import { GetItem } from       '@Utils/localstorage';
  
 export default {
   components: { Music, Sidebar, Content, SidebarNav, ProfileComponents },
@@ -32,7 +32,7 @@ export default {
 }
 </script>
 <script setup>
-import {ProfileStore} from "../lib/stores/profile.store";
+import {ProfileStore} from "@Stores/profile.store";
 const store = ProfileStore();
 store.get_profile_component();
 </script>

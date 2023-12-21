@@ -3,7 +3,7 @@
     <input type="text" class='input-search' :placeholder="[[ placeholder ]]" />
     <button class='bttn-search'>
       <img
-        src="../../assets/icons/mbox_search_white.png"
+        src="@Images/mbox_search_white.png"
         class='img-search'
       />
     </button>

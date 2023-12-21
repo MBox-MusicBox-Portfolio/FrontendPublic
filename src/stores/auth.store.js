@@ -1,8 +1,7 @@
-import { defineStore } from "pinia";
-import { Auth } from "../Service/Axios/axios.js";
-import { Register } from "../Service/Axios/axios.js";
-import { SetItem } from "../Service/LocalStorage/localstorage.js";
-import { Modal } from "../../../node_modules/bootstrap/dist/js/bootstrap.esm";
+import { defineStore } from    "pinia";
+import { Auth, Register } from "@Utils/axios.js";
+import { SetItem } from        "@Utils/localstorage.js";
+import { Modal } from          "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 
 export const AuthStore = defineStore("auth", {
   state: () => {

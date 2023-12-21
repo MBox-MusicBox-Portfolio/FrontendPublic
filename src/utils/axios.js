@@ -1,5 +1,5 @@
 import axios from "axios";
-import SourceJson from "./Source.json";
+import SourceJson from "@Jsons/Source.json";
 import jwt_decode from "jwt-decode";
 
 export async function decodeJwt(token) {

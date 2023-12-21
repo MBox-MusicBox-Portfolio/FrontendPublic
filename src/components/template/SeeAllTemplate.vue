@@ -9,11 +9,11 @@
     <div>
       <button class='button-show'>See all</button>
       <img
-        src="../../assets/icons/mbox_arrow_left.png"
+        src="@Images/mbox_arrow_left.png"
         class='image-arrow ml-70'
       />
       <img
-        src="../../assets/icons/mbox_arrow_right.png"
+        src="@Images/mbox_arrow_right.png"
         class='image-arrow mr-20'
       />
     </div>

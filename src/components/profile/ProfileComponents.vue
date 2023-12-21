@@ -4,7 +4,7 @@
         <p class='template__text' :class="stylePc()">{{ username }}</p>
         <button class="template__button m-0">
           <router-link to="/profile" v-if="image_flag">
-            <img class="button__image" src="../../assets/icons/no_usage_images/img-profile.png" />
+            <img class="button__image" src="@Images/no_usage_images/img-profile.png" />
           </router-link>
         </button>
       </div>

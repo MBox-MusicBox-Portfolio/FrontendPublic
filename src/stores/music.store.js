@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { GetItem } from "../Service/LocalStorage/localstorage";
+import { GetItem } from     "@Utils/localstorage";
 
 export const ProfileStore = defineStore("", {
   state: () => {

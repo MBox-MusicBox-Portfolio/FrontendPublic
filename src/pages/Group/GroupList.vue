@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import SearchComponent from "../../../../components/input/SearchComponent.vue";
-import GroupTemplate from "../../../../components/group/GroupTemplate.vue";
-import ButtonComponent_1 from "../../../../components/Button/ButtonComponent_1.vue";
-import { GroupStore } from "../../../../lib/stores/group.store";
+import SearchComponent from   "@Components/input/SearchComponent.vue";
+import GroupTemplate from     "@Components/group/GroupTemplate.vue";
+import ButtonComponent_1 from "@Components/Button/ButtonComponent_1.vue";
+import { GroupStore } from    "@Stores/group.store";
 
 export default {
   data() {

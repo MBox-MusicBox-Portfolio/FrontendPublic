@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { GetItem } from "../Service/LocalStorage/localstorage";
-import { decodeJwt } from "../Service/Axios/axios";
+import { GetItem } from     "@Utils/localstorage";
+import { decodeJwt } from   "@Utils/axios";
 
 export const ProfileStore = defineStore("", {
   state: () => {

@@ -87,10 +87,10 @@
 </template>
 
 <script>
-import FavoriteListTemplate from "../../../../components/template/FavoriteTemplate.vue";
-import SeeAllTemplate from "../../../../components/template/SeeAllTemplate.vue";
-import MusicTemplate from "../../../../components/template/MusicTemplate.vue";
-import UserTemplate from "../../../../components/template/AuthorTemplate.vue";
+import FavoriteListTemplate from  "@Components/template/FavoriteTemplate.vue";
+import SeeAllTemplate from        "@Components/template/SeeAllTemplate.vue";
+import MusicTemplate from         "@Components/template/MusicTemplate.vue";
+import UserTemplate from          "@Components/template/AuthorTemplate.vue";
 
 export default {
   data() {
