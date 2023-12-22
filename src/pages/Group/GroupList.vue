@@ -16,7 +16,7 @@
         :creator_name="group.creator"
         :description="group.fullInfo"
         :img_url="group.avatar"
-        :flag="gl_flag()"
+        :flag="'Join'"
         @click="JoinGroup(group.id)"
       />
     </div>
@@ -33,7 +33,6 @@ export default {
   data() {
     return {
       groupList: [],
-      value_mjg: []
     };
   },
   components: {
@@ -45,24 +44,18 @@ export default {
     async FethGroupList() {
       const gs = GroupStore();
       let value = await gs.AllGroupList();
-
-      this.value_mjg = await gs.JoinGroupList();
       this.groupList = value;
-      console.log(this.groupList);
-      console.log(this.value_mjg);
     },
     async JoinGroup(groupId) {
-      const gl = GroupStore();
+      const groupStore = GroupStore();
+      /*const groupJoin ;
+      const groupOpen ;*/
       await gl.Join(groupId);
       this.$router.push({
         name: "group",
         params: { groupId: groupId },
       });
     },
-    gl_flag() {
-      if (this.groupList.id === this.value_mjg.id) return false;
-      else return true;  
-    }
   },
   async mounted() {
     await this.FethGroupList();

@@ -1,5 +1,5 @@
 import { defineStore } from    "pinia";
-import { Auth, Register } from "@Utils/axios.js";
+import { UserAuth, UserRegister } from "@Utils/axios.js";
 import { SetItem } from        "@Utils/localstorage.js";
 import { Modal } from          "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 
@@ -16,7 +16,7 @@ export const AuthStore = defineStore("auth", {
         Password: data.password,
       };
 
-      await Auth(
+      await UserAuth(
         authorizationDataForm["Email"],
         authorizationDataForm["Password"]
       )
@@ -45,7 +45,7 @@ export const AuthStore = defineStore("auth", {
         Password: data.password,
       };
 
-      await Register(
+      await UserRegister(
         registerDataForm["Name"],
         registerDataForm["Email"],
         registerDataForm["Password"]

@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import {
   GroupList,
   Join,
+  Open,
   decodeJwt,
   MyJoinGroup,
 } from                      "@Utils/axios";
@@ -9,12 +10,20 @@ import { GetItem } from     "@Utils/localstorage";
 
 export const GroupStore = defineStore("group-store", {
   actions: {
+    /**
+     * 
+     * @returns 
+     */
     async AllGroupList() {
       const gl = await GroupList(1, 5);
       const value_gl = gl.data.value[0];
       return value_gl;
     },
 
+    /**
+     * 
+     * @returns 
+     */
     async JoinGroupList() {
       if (GetItem("JWTKey")) {
         const decode = await decodeJwt(GetItem("JWTKey"));
@@ -25,6 +34,10 @@ export const GroupStore = defineStore("group-store", {
       }
     },
 
+    /**
+     * 
+     * @param id 
+     */
     async Join(id) {
       if (GetItem("JWTKey")) {
         const decode = await decodeJwt(GetItem("JWTKey"));
@@ -33,6 +46,22 @@ export const GroupStore = defineStore("group-store", {
       }
     },
 
+    /**
+     * 
+     */
+    async Open() {
+      if (GetItem("JWTKey")) {
+        const decode = await decodeJwt(GetItem("JWTKey"));
+        const decode_parse = JSON.parse(decode);
+        await Open(decode_parse.Id);
+      }
+    },
+
+    /**
+     * 
+     * @param id 
+     * @returns 
+     */
     async Group(id) {
       const response = await GroupList(1, 5);
       const value = response.data.value[0];

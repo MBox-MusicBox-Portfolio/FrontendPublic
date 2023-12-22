@@ -4,13 +4,9 @@
         "login": "http://localhost/api/auth/login",
         "logout": "http://localhost/api/auth/logout"
     },
-    "Public": {
-        "band": "http://localhost/api/public/bands",
-        "band_join": "http://localhost/api/public/bands/band",
-        "band_user": "http://localhost/api/public/users/",
-
-        "playlist":"http://localhost/api/public/playlists",
-
-        "":""
+    "Bands": {
+        "GetBands": "http://localhost/api/public/bands",
+        "JoinBands": "http://localhost/api/public/bands/band",
+        "GetUserBands": "http://localhost/api/public/users/"
     }
 }

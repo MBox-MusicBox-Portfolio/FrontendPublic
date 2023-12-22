@@ -64,63 +64,63 @@ export default {
         return {
             testUser: [
                 {
-                    img_url: "@Images/mbox_favorit.png",
+                    img_url: "../../../src/assets/icons/mbox_favorit.png",
                     name: "Favorite Trackes",
                     name_info: "PlayList",
                     name_desk: "114 track",
                     flag: "10"
                 },
                 {
-                    img_url: "@Images/no_usage_images/user-avatar1.png", 
+                    img_url: "../../../src/assets/icons/no_usage_images/user-avatar1.png", 
                     name: "mayby", 
                     name_info: "PlayList", 
                     name_desk: "mompas",
                     flag: "10"
                 },
                 {
-                    img_url: "@Images/no_usage_images/music7.png", 
+                    img_url: "../../../src/assets/icons/no_usage_images/music7.png", 
                     name: "HOPE", 
                     name_info: "Playlist", 
                     name_desk: "khpolinaa",
                     flag: "50"
                 },
                 {
-                    img_url: "@Images/no_usage_images/music2.png", 
+                    img_url: "../../../src/assets/icons/no_usage_images/music2.png", 
                     name: "litlle", 
                     name_info: "Playlist", 
                     name_desk: "khpolinaa",
                     flag: "10"
                 },
                 {
-                    img_url: "@Images/no_usage_images/music4.png", 
+                    img_url: "../../../src/assets/icons/no_usage_images/music4.png", 
                     name: "AM", 
                     name_info: "Album", 
                     name_desk: "Arctic Monkeys",
                     flag: "10"
                 },
                 {
-                    img_url: "@Images/no_usage_images/user-avatar5.png", 
+                    img_url: "../../../src/assets/icons/no_usage_images/user-avatar5.png", 
                     name: "Krokus", 
                     name_info: "Artist", 
                     name_desk: "",
                     flag: "10"
                 },
                 {
-                    img_url: "@Images/no_usage_images/user-avatar4.png", 
+                    img_url: "../../../src/assets/icons/no_usage_images/user-avatar4.png", 
                     name: "Lil Peep", 
                     name_info: "Artist", 
                     name_desk: "Artist",
                     flag: "50"
                 },
                 {
-                    img_url: "@Images/no_usage_images/user-avatar2.png", 
+                    img_url: "../../../src/assets/icons/no_usage_images/user-avatar2.png", 
                     name: "Parfeniuk", 
                     name_info: "Artist", 
                     name_desk: "Artist",
                     flag: "50"
                 },
                 {
-                    img_url: "@Images/no_usage_images/user-avatar3.png", 
+                    img_url: "../../../src/assets/icons/no_usage_images/user-avatar3.png", 
                     name: "Buddy Guy", 
                     name_info: "Artist", 
                     name_desk: "Artist",

@@ -7,53 +7,111 @@ export async function decodeJwt(token) {
   return JSON.stringify(decoded);
 }
 
-/* Auth */
-
-export async function Register(username, email, password) {
-  const response = await axios // new Date
+/**
+ * Регистрация пользователя
+ * @param username 
+ * @param email
+ * @param password
+ * @returns
+*/
+export async function UserRegister(username, email, password) {
+  try {
+    const response = await axios // new Date
     .post(SourceJson.Auth.register, {
       Name: username,
       Email: email,
       Password: password,
     })
     return response;
+  }catch (err) {
+    return `Axios Error ${err}`
+  }
 }
 
-export async function Auth(email, password) {
-  const response = await axios
+/**
+ * Авторизация пользователя
+ * @param email 
+ * @param password 
+ * @returns 
+ */
+export async function UserAuth(email, password) {
+  try {
+    const response = await axios
     .post(SourceJson.Auth.login, {
       Email: email,
       Password: password,
     });
-  return response;
+    return response;
+  }catch (err) {
+    return `Axios Error ${err}`
+  }
 }
 
-/* Auth */
-
-/* Group */
-
+/**
+ * Возвращает массив групп
+ * @param index 
+ * @param size 
+ * @returns 
+ */
 export async function GroupList(index, size) {
-  const response = await axios.get(SourceJson.Public.band + "?PageIndex=" + index + "&PageSize=" + size);
-  return response;
+  try {
+    const response = await axios.get(SourceJson.Bands.GetBands + "?PageIndex=" + index + "&PageSize=" + size);
+    return response;
+  }catch (err) {
+    return `Axios Error ${err}`
+  }
 }
-
+/**
+ * Присоединение пользователя к группе
+ * @param user 
+ * @param group 
+ * @returns 
+ */
 export async function Join(user, group) {
-  const response = await axios.put(SourceJson.Public.band_join + "/" + group + "/user/" + user);
-  return response;
+  try {
+    const response = await axios.put(SourceJson.Bands.JoinBands + "/" + group + "/user/" + user);
+    return response;
+  }catch (err) {
+    return `Axios Error ${err}`
+  }
 }
 
+/**
+ * Открытие группы и проверка состоит ли пользователь в данной группе
+ * @param user 
+ * @returns 
+ */
+export async function Open(user) {
+  try {
+    const response = await axios.get(SourceJson.Bands.GetUserBands + "/" + user + "/user/bands");
+    return response;
+  }catch (err) {
+    return `Axios Error ${err}`
+  }
+}
+
+/**
+ * Массив групп к которому присоединился пользователь
+ * @param user 
+ * @param index 
+ * @param size 
+ * @returns 
+ */
 export async function MyJoinGroup(user, index, size) {
-  const response = await axios.get(SourceJson.Public.band_user + user + "/user/bands?PageIndex=" + index + "&PageSize=" + size);
-  return response;
+  try {
+    const response = await axios.get(SourceJson.GetUserBands + user + "/user/bands?PageIndex=" + index + "&PageSize=" + size);
+    return response;
+  }catch (err) {
+    return `Axios Error ${err}`
+  }
 }
 
-/* Group */
-
-/* Playlist */
-
-export async function Playlist() {
+/**
+ * Массив плейлистов
+ * No Delete
+ * @returns 
+ */
+/*export async function Playlist() {
   const response = await axios.get(SourceJson.Public.playlist);
   return response;
-}
-
-/* Playlist */
+}*/
