@@ -27,3 +27,6 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Copyright
+(C) All right reserved by Array Studio Inc  
