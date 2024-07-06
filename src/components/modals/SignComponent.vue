@@ -102,7 +102,7 @@ export default {
                 </button>
               </div>
             </Form>
-            <p class="text-danger">{{ as.error_message }}</p>
+            <p class="text-danger">{{ as.errorMessage }}</p>
           </div>
         </div>
         <div class="container_image-welcome">
@@ -236,7 +236,7 @@ export default {
                 </button>
               </div>
             </Form>
-            <p class="text-danger">{{ as.error_message }}</p>
+            <p class="text-danger">{{ as.errorMessage }}</p>
           </div>
         </div>
       </div>

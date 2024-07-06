@@ -56,7 +56,7 @@ import { Modal } from "../../../node_modules/bootstrap/dist/js/bootstrap.esm";
 export default {
   methods: {
     OpenModal() {
-      let modalShow = new Modal(document.getElementById("modal-edit"), {});
+      const modalShow = new Modal(document.getElementById("modal-edit"), {});
       modalShow.show();
     },
   },

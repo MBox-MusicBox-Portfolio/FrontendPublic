@@ -2,8 +2,12 @@ import axios from "axios";
 import SourceJson from "@Jsons/Source.json";
 import jwt_decode from "jwt-decode";
 
+function formatHttpError(err){
+  return `Axios Error: ${err}`;
+}
+
 export async function decodeJwt(token) {
-  let decoded = jwt_decode(token);
+  const decoded = jwt_decode(token);
   return JSON.stringify(decoded);
 }
 
@@ -16,15 +20,14 @@ export async function decodeJwt(token) {
 */
 export async function UserRegister(username, email, password) {
   try {
-    const response = await axios // new Date
-    .post(SourceJson.Auth.register, {
-      Name: username,
-      Email: email,
-      Password: password,
-    })
-    return response;
+    return await axios // new Date
+        .post(SourceJson.Auth.register, {
+          Name: username,
+          Email: email,
+          Password: password,
+        });
   }catch (err) {
-    return `Axios Error ${err}`
+    return formatHttpError(err);
   }
 }
 
@@ -36,14 +39,13 @@ export async function UserRegister(username, email, password) {
  */
 export async function UserAuth(email, password) {
   try {
-    const response = await axios
-    .post(SourceJson.Auth.login, {
-      Email: email,
-      Password: password,
-    });
-    return response;
+    return await axios
+        .post(SourceJson.Auth.login, {
+          Email: email,
+          Password: password,
+        });
   }catch (err) {
-    return `Axios Error ${err}`
+    return formatHttpError(err);
   }
 }
 
@@ -55,10 +57,9 @@ export async function UserAuth(email, password) {
  */
 export async function GroupList(index, size) {
   try {
-    const response = await axios.get(SourceJson.Bands.GetBands + "?PageIndex=" + index + "&PageSize=" + size);
-    return response;
+    return await axios.get(SourceJson.Bands.GetBands + "?PageIndex=" + index + "&PageSize=" + size);
   }catch (err) {
-    return `Axios Error ${err}`
+    return formatHttpError(err);
   }
 }
 /**
@@ -69,10 +70,9 @@ export async function GroupList(index, size) {
  */
 export async function Join(user, group) {
   try {
-    const response = await axios.put(SourceJson.Bands.JoinBands + "/" + group + "/user/" + user);
-    return response;
+    return await axios.put(SourceJson.Bands.JoinBands + "/" + group + "/user/" + user);
   }catch (err) {
-    return `Axios Error ${err}`
+    return formatHttpError(err);
   }
 }
 
@@ -83,10 +83,9 @@ export async function Join(user, group) {
  */
 export async function Open(user) {
   try {
-    const response = await axios.get(SourceJson.Bands.GetUserBands + "/" + user + "/user/bands");
-    return response;
+    return await axios.get(SourceJson.Bands.GetUserBands + "/" + user + "/user/bands");
   }catch (err) {
-    return `Axios Error ${err}`
+    return formatHttpError(err);
   }
 }
 
@@ -99,19 +98,10 @@ export async function Open(user) {
  */
 export async function MyJoinGroup(user, index, size) {
   try {
-    const response = await axios.get(SourceJson.GetUserBands + user + "/user/bands?PageIndex=" + index + "&PageSize=" + size);
-    return response;
+    return await axios.get(SourceJson.GetUserBands + user + "/user/bands?PageIndex=" + index + "&PageSize=" + size);
   }catch (err) {
-    return `Axios Error ${err}`
+    return formatHttpError(err);
   }
 }
 
-/**
- * Массив плейлистов
- * No Delete
- * @returns 
- */
-/*export async function Playlist() {
-  const response = await axios.get(SourceJson.Public.playlist);
-  return response;
-}*/
+// TODO: add request for playlist

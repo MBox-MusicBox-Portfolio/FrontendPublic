@@ -39,7 +39,7 @@
     },
     methods: {
       OpenModal() {
-        let modalShow = new Modal(document.getElementById("modal-edit1"), {});
+        const modalShow = new Modal(document.getElementById("modal-edit1"), {});
         modalShow.show();
       },
     },
