@@ -11,11 +11,11 @@ export const ProfileStore = defineStore("", {
     };
   },
   actions: {
-    async get_profile_component() {
+    async getProfileComponent() {
       if (GetItem("JWTKey")) {
-        let decode = await decodeJwt(GetItem("JWTKey"));
-        let decode_parse = JSON.parse(decode);
-        this.username = decode_parse.Name;
+        const decode = await decodeJwt(GetItem("JWTKey"));
+        const parsed = JSON.parse(decode);
+        this.username = parsed.Name;
       }
     },
   },

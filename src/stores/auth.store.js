@@ -1,71 +1,71 @@
 import { defineStore } from    "pinia";
 import { UserAuth, UserRegister } from "@Utils/axios.js";
 import { SetItem } from        "@Utils/localstorage.js";
-import { Modal } from          "../../node_modules/bootstrap/dist/js/bootstrap.esm";
 
 export const AuthStore = defineStore("auth", {
   state: () => {
     return {
-      error_message: "",
+      errorMessage: "",
     };
   },
   actions: {
     async SignIn(data) {
-      const authorizationDataForm = {
-        Email: data.email,
-        Password: data.password,
-      };
+      try {
+        const userAuthResponse = await UserAuth(
+          data.email,
+          data.password,
+        );
 
-      await UserAuth(
-        authorizationDataForm["Email"],
-        authorizationDataForm["Password"]
-      )
-        .then((test) => {
-          if (test.status === 200) {
-            this.error_message = test.statusText;
-            SetItem("JWTKey",test.data.token);
-            window.location.reload();
+        if (userAuthResponse.status === 200) {
+          this.errorMessage = userAuthResponse.statusText;
+          SetItem("JWTKey", userAuthResponse.data.token);
+          window.location.reload(); // TODO: use vue-router for redirection
+        }
+
+        if (userAuthResponse.status === 202) {
+          this.errorMessage = userAuthResponse.data.value.email;
+        }
+      } catch (error) {
+        console.error(error);
+
+        if (error.response.status === 404) {
+
+          if (error.response.data.value.email !== undefined) {
+            this.errorMessage = error.response.data.value.email;
           }
-          if (test.status === 202) this.error_message = test.data.value.email;
-        })
-        .catch((error) => {
-          console.log(error);
-          if (error.response.status === 404) {
-            if (error.response.data.value.email != undefined)
-              this.error_message = error.response.data.value.email;
-            if (error.response.data.value.password != undefined)
-              this.error_message = error.response.data.value.password;
+
+          if (error.response.data.value.password !== undefined) {
+            this.errorMessage = error.response.data.value.password;
           }
-        });
+        }
+      }
     },
     async SignUp(data) {
-      const registerDataForm = {
-        Email: data.email,
-        Name: data.name,
-        Password: data.password,
-      };
+      try {
+        const userRegisterResponse = await UserRegister(
+          data.name,
+          data.email,
+          data.password,
+        )
 
-      await UserRegister(
-        registerDataForm["Name"],
-        registerDataForm["Email"],
-        registerDataForm["Password"]
-      )
-      .then((test) => {
-        if (test.status === 201) {
-          this.error_message = test.statusText;
-          window.location.reload();
+        if (userRegisterResponse.status === 201) {
+          this.errorMessage = userRegisterResponse.statusText;
+          window.location.reload(); // TODO: use vue-router for redirection
         }
-      })
-      .catch((error) => {
-        console.log(error);
+      } catch (error) {
+        console.error(error);
+
         if (error.response.status === 400) {
-          if (error.response.data.value.email != undefined)
-            this.error_message = error.response.data.value.email;
-          if (error.response.data.value.Password != undefined)
-            this.error_message = error.response.data.value.Password;
-        }
-      });
 
+          if (error.response.data.value.email !== undefined) {
+            this.errorMessage = error.response.data.value.email;
+          }
+
+          if (error.response.data.value.Password !== undefined) {
+            this.errorMessage = error.response.data.value.Password;
+          }
+        }
+      }
     },
   },
 });
