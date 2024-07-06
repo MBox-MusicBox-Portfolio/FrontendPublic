@@ -2,13 +2,13 @@
   <section>
     <div class="d-sidebar-library">
       <div class="sidebar-logotype" data-aos="fade-down" data-aos-delay="150">
-        <img src="@Images/mbox_logo.png" class="logotype__image" />
+        <img src="../../assets/icons/mbox_logo.png" class="logotype__image" />
       </div>
       <div class="navigation-block" data-aos="fade-down" data-aos-delay="150">
         <div class="navigation__library d-flex align-items-center">
-          <img class="library__image" src="@Images/mbox_audio_library.png" />
+          <img class="library__image" src="../../assets/icons/mbox_audio_library.png" />
           <p class="library__text">My Library</p>
-          <img class="library__image-add" src="@Images/mbox_add.png" />
+          <img class="library__image-add" src="../../assets/icons/mbox_add.png" />
         </div>
         <div class="navigation__menu d-flex">
           <button class="menu__button">Playlist</button>
@@ -16,9 +16,9 @@
           <button class="menu__button">Artist</button>
         </div>
         <div class="navigation__search d-flex">
-          <img class="search__image" src="@Images/mbox_search.png" />
+          <img class="search__image" src="../../assets/icons/mbox_search.png" />
           <p class="search__text">Recent</p>
-          <img class="search__image" src="@Images/mbox_arrow_down.png" />
+          <img class="search__image" src="../../assets/icons/mbox_arrow_down.png" />
         </div>
       </div>
       <div v-if="check()" class="ml-20">
@@ -48,9 +48,9 @@
 </template>
 
 <script>
-import ButtonComponent_2Vue from '../../components/Button/ButtonComponent_2.vue';
-import SignComponent from '../../components/modals/SignComponent.vue';
-import LibraryComponents from '../../components/template/LibraryComponents.vue';
+import ButtonComponent_2Vue from '../button/Button_2.vue';
+import SignComponent from '../modals/SignIn.vue';
+import LibraryComponents from '../library/Library.vue';
 import { GetItem } from '../../utils/localstorage.js';
 
 export default {
@@ -130,11 +130,7 @@ export default {
   },
   methods: {
     check() {
-      if (GetItem('JWTKey') === null) {
-        return false;
-      } else {
-        return true;
-      }
+      return GetItem('JWTKey') !== null;
     },
     OpenModal(test) {
       SignComponent.methods.SetSign(test);

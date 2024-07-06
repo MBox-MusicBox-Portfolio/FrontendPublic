@@ -1,29 +1,16 @@
 <script setup>
-import * as Yup from 'yup';
 import { Form, Field } from 'vee-validate';
 import { AuthStore } from '../../stores/auth.store.js';
+import { signInValidationSchema, signUpValidationSchema } from '../../validations/index.js';
 
-const schema_sign_up = Yup.object().shape({
-  name: Yup.string().required('Name is required'),
-  email: Yup.string().email().required('Email is required'),
-  birthday: Yup.string().required('Birthday is required'),
-  password: Yup.string().required('Password is required'),
-  retypePassword: Yup.string().required('Retype password is requires'),
-});
+const auth = AuthStore();
 
-const schema_sign_in = Yup.object().shape({
-  email: Yup.string().required('Email is required'),
-  password: Yup.string().required('Password is required'),
-});
-
-const as = AuthStore();
-
-async function onSubmitUp(data) {
-  as.SignUp(data);
+async function onSignUp(data) {
+  return auth.SignUp(data);
 }
 
-async function onSubmitIn(data) {
-  as.SignIn(data);
+async function onSignIn(data) {
+  return auth.SignIn(data);
 }
 </script>
 
@@ -33,20 +20,19 @@ import { Modal } from 'bootstrap';
 export default {
   data() {
     return {
-      isSign: Boolean,
+      isSignIn: Boolean,
     };
   },
   methods: {
-    OpenModal(isSign) {
-      this.isSign = isSign;
-      let test = new Modal(document.getElementById('modal-sign'), {
+    OpenModal(isSignIn) {
+      this.isSignIn = isSignIn;
+      const modal = new Modal(document.getElementById('modal-sign'), {
         backdrop: true,
       });
-      test.show();
+      modal.show();
     },
-    SetSign(isSign) {
-      this.isSign = isSign;
-      console.log(this.isSign);
+    SetSign(isSignIn) {
+      this.isSignIn = isSignIn;
     },
   },
 };
@@ -56,11 +42,11 @@ export default {
   <div id="modal-sign" class="modal">
     <div class="modal-dialog modal-xl modal-margin d-flex justify-content-center">
       <!-- Sign In -->
-      <div v-if="isSign === true" class="d-container">
+      <div v-if="isSignIn === true" class="d-container">
         <div class="container__form" data-aos="fade-left" data-aos-delay="150">
           <h4 class="form__text-create">Sign In to MusicBox</h4>
           <div>
-            <Form v-slot="{ errors, isSubmitting }" :validation-schema="schema_sign_in" @submit="onSubmitIn">
+            <Form v-slot="{ errors, isSubmitting }" :validation-schema="signInValidationSchema" @submit="onSignIn">
               <div class="form-group">
                 <img src="@Images/mbox_email.png" class="form__image" />
                 <Field
@@ -90,7 +76,7 @@ export default {
                 <button class="form__button" :disabled="isSubmitting">Sign In</button>
               </div>
             </Form>
-            <p class="text-danger">{{ as.errorMessage }}</p>
+            <p class="text-danger">{{ auth.errorMessage }}</p>
           </div>
         </div>
         <div class="container_image-welcome">
@@ -129,7 +115,7 @@ export default {
         <div class="container__form" style="margin: 232px auto" data-aos="fade-left" data-aos-delay="150">
           <h4 class="form__text-create">Create Account</h4>
           <div>
-            <Form v-slot="{ errors, isSubmitting }" :validation-schema="schema_sign_up" @submit="onSubmitUp">
+            <Form v-slot="{ errors, isSubmitting }" :validation-schema="signUpValidationSchema" @submit="onSignUp">
               <div class="form-group">
                 <img src="@Images/mbox_account.png" class="form__image" />
                 <Field
@@ -189,7 +175,7 @@ export default {
                 <button class="form__button" :disabled="isSubmitting">Sign Up</button>
               </div>
             </Form>
-            <p class="text-danger">{{ as.errorMessage }}</p>
+            <p class="text-danger">{{ auth.errorMessage }}</p>
           </div>
         </div>
       </div>

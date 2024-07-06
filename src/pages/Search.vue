@@ -41,11 +41,11 @@
 </template>
 
 <script>
-import GenresTemplateVue from '../components/template/GenresTemplate.vue';
-import MusicTemplate from '../components/template/MusicTemplate.vue';
-import UserTemplate from '../components/template/AuthorTemplate.vue';
-import SearchComponent from '../components/input/SearchComponent.vue';
-import SeeAllTemplate from '../components/template/SeeAllTemplate.vue';
+import GenresTemplateVue from '../components/templates/GenresTemplate.vue';
+import MusicTemplate from '../components/templates/MusicTemplate.vue';
+import UserTemplate from '../components/templates/AuthorTemplate.vue';
+import SearchComponent from '../components/input/Search.vue';
+import SeeAllTemplate from '../components/templates/SeeAllTemplate.vue';
 
 export default {
   components: {

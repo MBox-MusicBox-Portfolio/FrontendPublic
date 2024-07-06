@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
-import App from './App/App.vue';
 import aos from 'aos';
+import App from './app/App.vue';
 
 import { createPinia } from 'pinia';
 

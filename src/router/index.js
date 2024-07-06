@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import BodyView from '../App/BodyView.vue';
+import BodyView from '../app/BodyView.vue';
 import Home from '../pages/Home.vue';
 import Search from '../pages/Search.vue';
 import GroupList from '../pages/Group/GroupList.vue';

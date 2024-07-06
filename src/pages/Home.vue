@@ -84,9 +84,9 @@
 </template>
 
 <script>
-import MusicTemplate from '../components/template/MusicTemplate.vue';
-import UserTemplate from '../components/template/AuthorTemplate.vue';
-import SeeAllTemplate from '../components/template/SeeAllTemplate.vue';
+import MusicTemplate from '../components/templates/MusicTemplate.vue';
+import UserTemplate from '../components/templates/AuthorTemplate.vue';
+import SeeAllTemplate from '../components/templates/SeeAllTemplate.vue';
 
 export default {
   components: {

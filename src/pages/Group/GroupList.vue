@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import SearchComponent from '../../components/input/SearchComponent.vue';
-import GroupTemplate from '../../components/group/GroupTemplate.vue';
-import ButtonComponent_1 from '../../components/Button/ButtonComponent_1.vue';
+import SearchComponent from '../../components/input/Search.vue';
+import GroupTemplate from '../../components/group/templates/GroupTemplate.vue';
+import ButtonComponent_1 from '../../components/button/Button_1.vue';
 import { GroupStore } from '../../stores/group.store.js';
 
 export default {

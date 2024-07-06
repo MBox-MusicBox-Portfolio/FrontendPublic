@@ -4,7 +4,7 @@
       <ProfileComponents
         v-if="$route.path !== '/profile' && checkIfUserAuthenticated()"
         :image_flag="true"
-        :username="store.username"
+        :username="profile.username"
       />
       <Sidebar />
       <SidebarNav />
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import CustomContent from '../pages/CustomContent.vue';
+import CustomContent from '../pages/PageWrapper.vue';
 import Music from '../pages/Music/Music.vue';
-import Sidebar from '../pages/Sidebar/Sidebar.vue';
-import SidebarNav from '../pages/Sidebar/SidebarNav.vue';
-import ProfileComponents from '../components/profile/ProfileComponents.vue';
+import Sidebar from '../components/sidebar/SideBar.vue';
+import SidebarNav from '../components/sidebar/SideMenu.vue';
+import ProfileComponents from '../components/profile/Profile.vue';
 import { GetItem } from '../utils/localstorage.js';
 
 export default {
@@ -35,8 +35,8 @@ export default {
 <script setup>
 import { ProfileStore } from '../stores/profile.store.js';
 
-const store = ProfileStore();
-store.getProfileComponent();
+const profile = ProfileStore();
+profile.getProfileComponent();
 </script>
 
 <style></style>

@@ -117,13 +117,13 @@
 </template>
 
 <script>
-import MusicTemplate from '../../components/template/MusicTemplate.vue';
-import SeeAllTemplate from '../../components/template/SeeAllTemplate.vue';
-import GroupArtistTemplate from '../../components/group/GroupArtistTemplate.vue';
-import ButtonComponent_1Vue from '../../components/Button/ButtonComponent_1.vue';
-import CreatePost from '../../components/modals/CreatePostComponent.vue';
-import PostTemplate from '../../components/group/PostTemplate.vue';
-import AddArtist from '../../components/modals/AddArtistComponent.vue';
+import MusicTemplate from '../../components/templates/MusicTemplate.vue';
+import SeeAllTemplate from '../../components/templates/SeeAllTemplate.vue';
+import GroupArtistTemplate from '../../components/group/templates/GroupArtistTemplate.vue';
+import ButtonComponent_1Vue from '../../components/button/Button_1.vue';
+import CreatePost from '../../components/modals/AddPost.vue';
+import PostTemplate from '../../components/group/templates/PostTemplate.vue';
+import AddArtist from '../../components/modals/AddArtist.vue';
 import { GroupStore } from '../../stores/group.store.js';
 
 export default {
