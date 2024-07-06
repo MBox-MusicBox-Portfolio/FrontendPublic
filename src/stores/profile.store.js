@@ -1,8 +1,8 @@
-import { defineStore } from "pinia";
-import { GetItem } from     "@Utils/localstorage";
-import { decodeJwt } from   "@Utils/axios";
+import { defineStore } from 'pinia';
+import { decodeJwt } from '../utils/axios.js';
+import { GetItem } from '../utils/localstorage.js';
 
-export const ProfileStore = defineStore("", {
+export const ProfileStore = defineStore('', {
   state: () => {
     return {
       username: String,
@@ -12,8 +12,8 @@ export const ProfileStore = defineStore("", {
   },
   actions: {
     async getProfileComponent() {
-      if (GetItem("JWTKey")) {
-        const decode = await decodeJwt(GetItem("JWTKey"));
+      if (GetItem('JWTKey')) {
+        const decode = await decodeJwt(GetItem('JWTKey'));
         const parsed = JSON.parse(decode);
         this.username = parsed.Name;
       }

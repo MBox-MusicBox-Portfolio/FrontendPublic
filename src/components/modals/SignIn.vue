@@ -1,75 +1,54 @@
 <script setup>
-import { AuthStore } from   "@Stores/auth.store";
-import * as Yup from        "yup";
-import { Form, Field } from "vee-validate";
+import { Form, Field } from 'vee-validate';
+import { AuthStore } from '../../stores/auth.store.js';
+import { signInValidationSchema, signUpValidationSchema } from '../../validations/index.js';
 
-const schema_sign_up = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  email: Yup.string().email().required("Email is required"),
-  birthday: Yup.string().required("Birthday is required"),
-  password: Yup.string().required("Password is required"),
-  retypePassword: Yup.string().required("Retype password is requires"),
-});
+const auth = AuthStore();
 
-const schema_sign_in = Yup.object().shape({
-  email: Yup.string().required("Email is required"),
-  password: Yup.string().required("Password is required"),
-});
-
-const as = AuthStore();
-
-async function onSubmitUp(data) {
-  as.SignUp(data);
+async function onSignUp(data) {
+  return auth.SignUp(data);
 }
 
-async function onSubmitIn(data) {
-  as.SignIn(data);
+async function onSignIn(data) {
+  return auth.SignIn(data);
 }
 </script>
 
 <script>
-import { Modal } from "../../../node_modules/bootstrap/dist/js/bootstrap.esm";
+import { Modal } from 'bootstrap';
 
 export default {
   data() {
     return {
-      isSign: Boolean
-    }
+      isSignIn: Boolean,
+    };
   },
   methods: {
-    OpenModal(isSign) {
-      this.isSign = isSign;
-      let test = new Modal(document.getElementById('modal-sign'), {
+    OpenModal(isSignIn) {
+      this.isSignIn = isSignIn;
+      const modal = new Modal(document.getElementById('modal-sign'), {
         backdrop: true,
       });
-      test.show();
+      modal.show();
     },
-    SetSign(isSign) {
-      this.isSign = isSign;
-      console.log(this.isSign);
-    }
+    SetSign(isSignIn) {
+      this.isSignIn = isSignIn;
+    },
   },
 };
 </script>
 
 <template>
-  <div class="modal" id="modal-sign">
+  <div id="modal-sign" class="modal">
     <div class="modal-dialog modal-xl modal-margin d-flex justify-content-center">
       <!-- Sign In -->
-      <div class="d-container" v-if="isSign === true">
+      <div v-if="isSignIn === true" class="d-container">
         <div class="container__form" data-aos="fade-left" data-aos-delay="150">
           <h4 class="form__text-create">Sign In to MusicBox</h4>
           <div>
-            <Form
-              @submit="onSubmitIn"
-              :validation-schema="schema_sign_in"
-              v-slot="{ errors, isSubmitting }"
-            >
+            <Form v-slot="{ errors, isSubmitting }" :validation-schema="signInValidationSchema" @submit="onSignIn">
               <div class="form-group">
-                <img
-                  src="@Images/mbox_email.png"
-                  class="form__image"
-                />
+                <img src="@Images/mbox_email.png" class="form__image" />
                 <Field
                   name="email"
                   type="email"
@@ -80,10 +59,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.email }}</div>
               </div>
               <div class="form-group mt-10">
-                <img
-                  src="@Images/mbox_password.png"
-                  class="form__image"
-                />
+                <img src="@Images/mbox_password.png" class="form__image" />
                 <Field
                   name="password"
                   type="password"
@@ -97,19 +73,14 @@ export default {
                 <p class="form__text-fogot">forgot your password?</p>
               </div>
               <div class="form-group d-flex justify-content-center mt-4">
-                <button class="form__button" :disabled="isSubmitting">
-                  Sign In
-                </button>
+                <button class="form__button" :disabled="isSubmitting">Sign In</button>
               </div>
             </Form>
-            <p class="text-danger">{{ as.errorMessage }}</p>
+            <p class="text-danger">{{ auth.errorMessage }}</p>
           </div>
         </div>
         <div class="container_image-welcome">
-          <img
-            src="@Images/mbox_background_1.png"
-            class="image__background"
-          />
+          <img src="@Images/mbox_background_1.png" class="image__background" />
           <div class="container__content text-center">
             <div class="d-flex justify-content-center">
               <div class="content__width">
@@ -124,22 +95,16 @@ export default {
             </div>
           </div>
         </div>
-      
       </div>
       <!-- Sign Up -->
-      <div class="d-container" v-else>
+      <div v-else class="d-container">
         <div class="container_image-welcome">
-          <img
-            src="@Images/mbox_background.png"
-            class="image__background image__background-left"
-          />
+          <img src="@Images/mbox_background.png" class="image__background image__background-left" />
           <div class="container__content text-center">
             <div class="d-flex justify-content-center">
               <div class="content__width">
                 <p class="content__text-welcom">Welcome Back!</p>
-                <p class="content__text-description">
-                  To keep connected with us please login with your personal info
-                </p>
+                <p class="content__text-description">To keep connected with us please login with your personal info</p>
               </div>
             </div>
             <div>
@@ -147,24 +112,12 @@ export default {
             </div>
           </div>
         </div>
-        <div
-          class="container__form"
-          style="margin: 232px auto"
-          data-aos="fade-left"
-          data-aos-delay="150"
-        >
+        <div class="container__form" style="margin: 232px auto" data-aos="fade-left" data-aos-delay="150">
           <h4 class="form__text-create">Create Account</h4>
           <div>
-            <Form
-              @submit="onSubmitUp"
-              :validation-schema="schema_sign_up"
-              v-slot="{ errors, isSubmitting }"
-            >
+            <Form v-slot="{ errors, isSubmitting }" :validation-schema="signUpValidationSchema" @submit="onSignUp">
               <div class="form-group">
-                <img
-                  src="@Images/mbox_account.png"
-                  class="form__image"
-                />
+                <img src="@Images/mbox_account.png" class="form__image" />
                 <Field
                   name="name"
                   type="text"
@@ -175,10 +128,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.name }}</div>
               </div>
               <div class="form-group mt-10">
-                <img
-                  src="@Images/mbox_email.png"
-                  class="form__image"
-                />
+                <img src="@Images/mbox_email.png" class="form__image" />
                 <Field
                   name="email"
                   type="email"
@@ -189,10 +139,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.email }}</div>
               </div>
               <div class="form-group mt-10">
-                <img
-                  src="@Images/mbox_calendar.png"
-                  class="form__image form__image-birthday"
-                />
+                <img src="@Images/mbox_calendar.png" class="form__image form__image-birthday" />
                 <Field
                   name="birthday"
                   type="text"
@@ -203,10 +150,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.birthday }}</div>
               </div>
               <div class="form-group mt-10">
-                <img
-                  src="@Images/mbox_password.png"
-                  class="form__image"
-                />
+                <img src="@Images/mbox_password.png" class="form__image" />
                 <Field
                   name="password"
                   type="password"
@@ -217,10 +161,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.password }}</div>
               </div>
               <div class="form-group mt-10">
-                <img
-                  src="@Images/mbox_password.png"
-                  class="form__image"
-                />
+                <img src="@Images/mbox_password.png" class="form__image" />
                 <Field
                   name="retypePassword"
                   type="password"
@@ -231,12 +172,10 @@ export default {
                 <div class="invalid-feedback">{{ errors.retypePassword }}</div>
               </div>
               <div class="form-group d-flex justify-content-center mt-4">
-                <button class="form__button" :disabled="isSubmitting">
-                  Sign Up
-                </button>
+                <button class="form__button" :disabled="isSubmitting">Sign Up</button>
               </div>
             </Form>
-            <p class="text-danger">{{ as.errorMessage }}</p>
+            <p class="text-danger">{{ auth.errorMessage }}</p>
           </div>
         </div>
       </div>

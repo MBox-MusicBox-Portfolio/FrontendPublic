@@ -1,9 +1,6 @@
 <template>
   <section class="pb-5">
-    <img
-      src="@Images/no_usage_images/bg-home.png"
-      class="img-bg-random"
-    />
+    <img src="@Images/no_usage_images/bg-home.png" class="img-bg-random" />
     <div class="block-image-rnd d-flex">
       <div class="block-wrap-content">
         <h1 class="text-name mb-4 mt-2 ms-2">Arctice Monkeys</h1>
@@ -87,18 +84,18 @@
 </template>
 
 <script>
-import MusicTemplate from   "@Components/template/MusicTemplate.vue";
-import UserTemplate from    "@Components/template/AuthorTemplate.vue";
-import SeeAllTemplate from  "@Components/template/SeeAllTemplate.vue";
+import MusicTemplate from '../components/templates/MusicTemplate.vue';
+import UserTemplate from '../components/templates/AuthorTemplate.vue';
+import SeeAllTemplate from '../components/templates/SeeAllTemplate.vue';
 
 export default {
-  data() {
-    return {};
-  },
   components: {
     MusicTemplate,
     UserTemplate,
     SeeAllTemplate,
+  },
+  data() {
+    return {};
   },
 };
 </script>

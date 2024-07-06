@@ -1,5 +1,5 @@
-FROM node:18-alpine
-EXPOSE 3000
+FROM node:20.12-alpine
+EXPOSE 5173
 
 WORKDIR /usr/src/app
 RUN mkdir src

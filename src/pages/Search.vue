@@ -1,20 +1,17 @@
 <template>
   <section>
     <SearchComponent :placeholder="'Search'" />
-    <div class='mt-5 ml-20'>
+    <div class="mt-5 ml-20">
       <div>
         <SeeAllTemplate :name="'Search History'" />
-        <div class='d-flex'>
+        <div class="d-flex">
           <MusicTemplate
             flag="music"
             name="Weekend"
             name_info="Taylor Swift, The Weekend, Ed Sheeran, Lana Del Rey, Arian..."
             img_url="../../../../src/assets/icons/no_usage_images/music6.png"
           />
-          <UserTemplate
-            img_url="../../../../src/assets/icons/no_usage_images/user-avatar2.png"
-            name="Parfeniuk"
-          />
+          <UserTemplate img_url="../../../../src/assets/icons/no_usage_images/user-avatar2.png" name="Parfeniuk" />
           <MusicTemplate
             flag="music"
             name="AM"
@@ -29,11 +26,11 @@
           />
         </div>
       </div>
-      <div class='mt-3'>
+      <div class="mt-3">
         <div>
-          <p class='text-search-genres mb-3'>Genres</p>
+          <p class="text-search-genres mb-3">Genres</p>
         </div>
-        <div class='d-flex flex-wrap'>
+        <div class="d-flex flex-wrap">
           <div v-for="item in testGenres" :key="item">
             <GenresTemplateVue :color="item.color" :name="item.name" />
           </div>
@@ -44,97 +41,97 @@
 </template>
 
 <script>
-import GenresTemplateVue from "../components/template/GenresTemplate.vue";
-import MusicTemplate from "../components/template/MusicTemplate.vue";
-import UserTemplate from "../components/template/AuthorTemplate.vue";
-import SearchComponent from "../components/input/SearchComponent.vue";
-import SeeAllTemplate from "../components/template/SeeAllTemplate.vue";
+import GenresTemplateVue from '../components/templates/GenresTemplate.vue';
+import MusicTemplate from '../components/templates/MusicTemplate.vue';
+import UserTemplate from '../components/templates/AuthorTemplate.vue';
+import SearchComponent from '../components/input/Search.vue';
+import SeeAllTemplate from '../components/templates/SeeAllTemplate.vue';
 
 export default {
-  data() {
-    return {
-      testGenres: [
-        {
-          name: "Podcast",
-          color: "#6083F2",
-        },
-        {
-          name: "Pop",
-          color: "#2B3385",
-        },
-        {
-          name: "Jazz",
-          color: "black",
-        },
-        {
-          name: "For You",
-          color: "#ABB1CA",
-        },
-        {
-          name: "Mood",
-          color: "#6083F2",
-        },
-        {
-          name: "Metal",
-          color: "#2B3385",
-        },
-        {
-          name: "Jazz",
-          color: "black",
-        },
-        {
-          name: "For You",
-          color: "#ABB1CA",
-        },
-        {
-          name: "Mood",
-          color: "#6083F2",
-        },
-        {
-          name: "Metal",
-          color: "#2B3385",
-        },
-        {
-          name: "Jazz",
-          color: "black",
-        },
-        {
-          name: "For You",
-          color: "#ABB1CA",
-        },
-        {
-          name: "Mood",
-          color: "#6083F2",
-        },
-        {
-          name: "Metal",
-          color: "#2B3385",
-        },
-        {
-          name: "Jazz",
-          color: "black",
-        },
-        {
-          name: "For You",
-          color: "#ABB1CA",
-        },
-        {
-          name: "Mood",
-          color: "#6083F2",
-        },
-        {
-          name: "Metal",
-          color: "#2B3385",
-        },
-      ],
-    };
-  },
   components: {
     GenresTemplateVue,
     MusicTemplate,
     UserTemplate,
     SearchComponent,
     SeeAllTemplate,
+  },
+  data() {
+    return {
+      testGenres: [
+        {
+          name: 'Podcast',
+          color: '#6083F2',
+        },
+        {
+          name: 'Pop',
+          color: '#2B3385',
+        },
+        {
+          name: 'Jazz',
+          color: 'black',
+        },
+        {
+          name: 'For You',
+          color: '#ABB1CA',
+        },
+        {
+          name: 'Mood',
+          color: '#6083F2',
+        },
+        {
+          name: 'Metal',
+          color: '#2B3385',
+        },
+        {
+          name: 'Jazz',
+          color: 'black',
+        },
+        {
+          name: 'For You',
+          color: '#ABB1CA',
+        },
+        {
+          name: 'Mood',
+          color: '#6083F2',
+        },
+        {
+          name: 'Metal',
+          color: '#2B3385',
+        },
+        {
+          name: 'Jazz',
+          color: 'black',
+        },
+        {
+          name: 'For You',
+          color: '#ABB1CA',
+        },
+        {
+          name: 'Mood',
+          color: '#6083F2',
+        },
+        {
+          name: 'Metal',
+          color: '#2B3385',
+        },
+        {
+          name: 'Jazz',
+          color: 'black',
+        },
+        {
+          name: 'For You',
+          color: '#ABB1CA',
+        },
+        {
+          name: 'Mood',
+          color: '#6083F2',
+        },
+        {
+          name: 'Metal',
+          color: '#2B3385',
+        },
+      ],
+    };
   },
 };
 </script>
