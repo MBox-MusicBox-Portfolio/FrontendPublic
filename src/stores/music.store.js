@@ -1,12 +1,8 @@
-import { defineStore } from "pinia";
-import { GetItem } from     "@Utils/localstorage";
+import { defineStore } from 'pinia';
 
-export const ProfileStore = defineStore("", {
+export const ProfileStore = defineStore('', {
   state: () => {
-    return {
-    };
+    return {};
   },
-  actions: {
-    
-  },
+  actions: {},
 });

@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import BodyView from '../App/BodyView.vue';
-import Home from '@Pages/Home.vue';
-import Search from '@Pages/Search.vue';
-import GroupList from '@Pages/Group/GroupList.vue';
-import Group from '@Pages/Group/Group.vue';
-import CreateGroup from '@Pages/Group/CreateGroup.vue';
-import Profile from '@Pages/Profile/Profile.vue';
+import Home from '../pages/Home.vue';
+import Search from '../pages/Search.vue';
+import GroupList from '../pages/Group/GroupList.vue';
+import Group from '../pages/Group/Group.vue';
+import CreateGroup from '../pages/Group/CreateGroup.vue';
+import Profile from '../pages/Profile/Profile.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,36 +19,36 @@ const router = createRouter({
         {
           path: '/',
           name: 'home',
-          component: Home
+          component: Home,
         },
         {
           path: 'search',
           name: 'search',
-          component: Search
+          component: Search,
         },
         {
           path: 'group-list',
           name: 'group-list',
-          component: GroupList
+          component: GroupList,
         },
         {
           path: 'group/:groupId',
           name: 'group',
-          component: Group
+          component: Group,
         },
         {
           path: 'group-create',
           name: 'group-create',
-          component: CreateGroup
+          component: CreateGroup,
         },
         {
           path: 'profile',
           name: 'profile',
-          component: Profile
-        }
+          component: Profile,
+        },
       ],
-    }
-  ]
-})
+    },
+  ],
+});
 
 export default router;

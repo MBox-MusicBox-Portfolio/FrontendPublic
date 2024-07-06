@@ -1,18 +1,18 @@
-import { createApp } from 'vue'
-import App from './App/App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './App/App.vue';
 import aos from 'aos';
 
-import { createPinia } from 'pinia'
+import { createPinia } from 'pinia';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/scss/main.scss';
 import 'aos/dist/aos.css';
+import router from './router/index.js';
 
-const app = createApp(App)
+const app = createApp(App);
 
 app.use(aos.init());
 app.use(createPinia());
-app.use(router)
+app.use(router);
 
-app.mount('#app')
+app.mount('#app');

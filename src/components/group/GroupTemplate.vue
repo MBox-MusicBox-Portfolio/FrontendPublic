@@ -34,8 +34,7 @@ export default {
     img_url: String,
     flag_name: String,
   },
-  methods: {
-  }
+  methods: {},
 };
 </script>
 

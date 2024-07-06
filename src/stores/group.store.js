@@ -1,12 +1,12 @@
-import {defineStore} from "pinia";
-import {decodeJwt, GroupList, Join, MyJoinGroup, Open,} from "@Utils/axios";
-import {GetItem} from "@Utils/localstorage";
+import { defineStore } from 'pinia';
+import { decodeJwt, GroupList, Join, MyJoinGroup, Open } from '../utils/axios.js';
+import { GetItem } from '../utils/localstorage.js';
 
-export const GroupStore = defineStore("group-store", {
+export const GroupStore = defineStore('group-store', {
   actions: {
     /**
-     * 
-     * @returns 
+     *
+     * @returns
      */
     async AllGroupList() {
       const gl = await GroupList(1, 5);
@@ -14,12 +14,12 @@ export const GroupStore = defineStore("group-store", {
     },
 
     /**
-     * 
-     * @returns 
+     *
+     * @returns
      */
     async JoinGroupList() {
-      if (GetItem("JWTKey")) {
-        const decode = await decodeJwt(GetItem("JWTKey"));
+      if (GetItem('JWTKey')) {
+        const decode = await decodeJwt(GetItem('JWTKey'));
         const decode_parse = JSON.parse(decode);
 
         const mjg = await MyJoinGroup(decode_parse.Id, 1, 5);
@@ -28,12 +28,12 @@ export const GroupStore = defineStore("group-store", {
     },
 
     /**
-     * 
-     * @param id 
+     *
+     * @param id
      */
     async Join(id) {
-      if (GetItem("JWTKey")) {
-        const decode = await decodeJwt(GetItem("JWTKey"));
+      if (GetItem('JWTKey')) {
+        const decode = await decodeJwt(GetItem('JWTKey'));
         const decode_parse = JSON.parse(decode);
 
         await Join(decode_parse.Id, id);
@@ -41,11 +41,11 @@ export const GroupStore = defineStore("group-store", {
     },
 
     /**
-     * 
+     *
      */
     async Open() {
-      if (GetItem("JWTKey")) {
-        const decode = await decodeJwt(GetItem("JWTKey"));
+      if (GetItem('JWTKey')) {
+        const decode = await decodeJwt(GetItem('JWTKey'));
         const decode_parse = JSON.parse(decode);
 
         await Open(decode_parse.Id);
@@ -53,9 +53,9 @@ export const GroupStore = defineStore("group-store", {
     },
 
     /**
-     * 
-     * @param id 
-     * @returns 
+     *
+     * @param id
+     * @returns
      */
     async Group(id) {
       const response = await GroupList(1, 5);

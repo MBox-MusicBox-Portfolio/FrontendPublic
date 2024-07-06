@@ -1,11 +1,6 @@
 <template>
   <section>
-    <ButtonComponent_1
-      link="group-create"
-      name="Create new group"
-      :flag="true"
-      @click="MyJoinGroup"
-    />
+    <ButtonComponent_1 link="group-create" name="Create new group" :flag="true" @click="MyJoinGroup" />
     <SearchComponent :placeholder="'Search group'"></SearchComponent>
     <div class="mt-5">
       <GroupTemplate
@@ -24,21 +19,24 @@
 </template>
 
 <script>
-import SearchComponent from   "@Components/input/SearchComponent.vue";
-import GroupTemplate from     "@Components/group/GroupTemplate.vue";
-import ButtonComponent_1 from "@Components/Button/ButtonComponent_1.vue";
-import { GroupStore } from    "@Stores/group.store";
+import SearchComponent from '../../components/input/SearchComponent.vue';
+import GroupTemplate from '../../components/group/GroupTemplate.vue';
+import ButtonComponent_1 from '../../components/Button/ButtonComponent_1.vue';
+import { GroupStore } from '../../stores/group.store.js';
 
 export default {
+  components: {
+    SearchComponent,
+    GroupTemplate,
+    ButtonComponent_1,
+  },
   data() {
     return {
       groupList: [],
     };
   },
-  components: {
-    SearchComponent,
-    GroupTemplate,
-    ButtonComponent_1,
+  async mounted() {
+    await this.FethGroupList();
   },
   methods: {
     async FethGroupList() {
@@ -48,17 +46,12 @@ export default {
     },
     async JoinGroup(groupId) {
       const groupStore = GroupStore();
-      /*const groupJoin ;
-      const groupOpen ;*/
-      await gl.Join(groupId);
+      await groupStore.Join(groupId);
       this.$router.push({
-        name: "group",
+        name: 'group',
         params: { groupId: groupId },
       });
     },
-  },
-  async mounted() {
-    await this.FethGroupList();
   },
 };
 </script>

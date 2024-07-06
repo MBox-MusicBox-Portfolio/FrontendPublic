@@ -1,9 +1,9 @@
 <template>
-  <div class='music-template-author mt-3 w-50'>
-    <div class='d-flex justify-content-center'>
-      <img :src="img_url" class='rounded-circle img-ut'/>
+  <div class="music-template-author mt-3 w-50">
+    <div class="d-flex justify-content-center">
+      <img :src="img_url" class="rounded-circle img-ut" />
     </div>
-    <div class='ms-2 mt-3 d-block'>
+    <div class="ms-2 mt-3 d-block">
       <p class="text-name-ut mb-2">{{ name }}</p>
     </div>
   </div>

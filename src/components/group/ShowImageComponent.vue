@@ -1,15 +1,11 @@
-<template>
-  
-</template>
+<template><div></div></template>
 
 <script>
 export default {
-    props: {
-        image: Array
-    }
-}
+  props: {
+    image: Array,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -1,34 +1,23 @@
 <template>
   <section>
-    <img
-      src="../../../../assets/icons/no_usage_images/bg-profile.png"
-      class='image-background'
-    />
-    <div class='ml-20'>
-      <div class='d-flex'>
-        <div class='profile-card'>
+    <img src="../../../../assets/icons/no_usage_images/bg-profile.png" class="image-background" />
+    <div class="ml-20">
+      <div class="d-flex">
+        <div class="profile-card">
           <!-- Profile card-->
-          <div class='d-flex justify-content-center'>
-            <img
-              src="../../../../assets/icons/no_usage_images/img-profile.png"
-            />
+          <div class="d-flex justify-content-center">
+            <img src="../../../../assets/icons/no_usage_images/img-profile.png" />
           </div>
-          <div class='text-center mt-20'>
-            <p class='card__text-name'>khpolinaa</p>
-            <p class='card__text mt-1'>we were born to die</p>
-            <p class='card__text mt-20'>
-              <span class='card__text-index mr-20'>17</span> Playlist
-            </p>
-            <p class='card__text mt-10'>
-              <span class='card__text-index mr-20'>233</span> Subscribers
-            </p>
-            <p class='card__text mt-10'>
-              <span class='card__text-index mr-20'>110</span> Subscribtions
-            </p>
-            <button class='card__button-edit mt-20'>Edit profile</button>
+          <div class="text-center mt-20">
+            <p class="card__text-name">khpolinaa</p>
+            <p class="card__text mt-1">we were born to die</p>
+            <p class="card__text mt-20"><span class="card__text-index mr-20">17</span> Playlist</p>
+            <p class="card__text mt-10"><span class="card__text-index mr-20">233</span> Subscribers</p>
+            <p class="card__text mt-10"><span class="card__text-index mr-20">110</span> Subscribtions</p>
+            <button class="card__button-edit mt-20">Edit profile</button>
           </div>
         </div>
-        <div class='favorite-block'>
+        <div class="favorite-block">
           <SeeAllTemplate name="Your favorite tracks" />
           <div class="mt-4 ml-149">
             <FavoriteListTemplate
@@ -44,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class='mb-5 position-relative'>
+      <div class="mb-5 position-relative">
         <!-- Content -->
         <div>
           <SeeAllTemplate name="Your playlist" />
@@ -73,12 +62,7 @@
         <div class="mt-4">
           <SeeAllTemplate name="Your Subscribers" />
           <div class="d-flex flex-nowrap overflow-hidden">
-            <UserTemplate
-              v-for="item in subList"
-              :key="item"
-              :name="item.name"
-              :img_url="item.img_url"
-            />
+            <UserTemplate v-for="item in subList" :key="item" :name="item.name" :img_url="item.img_url" />
           </div>
         </div>
       </div>
@@ -87,43 +71,39 @@
 </template>
 
 <script>
-import FavoriteListTemplate from  "@Components/template/FavoriteTemplate.vue";
-import SeeAllTemplate from        "@Components/template/SeeAllTemplate.vue";
-import MusicTemplate from         "@Components/template/MusicTemplate.vue";
-import UserTemplate from          "@Components/template/AuthorTemplate.vue";
+import FavoriteListTemplate from '../../components/template/FavoriteTemplate.vue';
+import SeeAllTemplate from '../../components/template/SeeAllTemplate.vue';
+import MusicTemplate from '../../components/template/MusicTemplate.vue';
+import UserTemplate from '../../components/template/AuthorTemplate.vue';
 
 export default {
-  data() {
-    return {
-      subList: [
-        {
-          img_url:
-            "../../../../../src/assets/icons/no_usage_images/user-sub4.png",
-          name: "nikawtf",
-        },
-        {
-          img_url:
-            "../../../../../src/assets/icons/no_usage_images/user-sub3.png",
-          name: "sabbath",
-        },
-        {
-          img_url:
-            "../../../../../src/assets/icons/no_usage_images/user-sub2.png",
-          name: "ALEX",
-        },
-        {
-          img_url:
-            "../../../../../src/assets/icons/no_usage_images/user-sub1.png",
-          name: "KJABBA",
-        },
-      ],
-    };
-  },
   components: {
     FavoriteListTemplate,
     SeeAllTemplate,
     MusicTemplate,
     UserTemplate,
+  },
+  data() {
+    return {
+      subList: [
+        {
+          img_url: '../../../../../src/assets/icons/no_usage_images/user-sub4.png',
+          name: 'nikawtf',
+        },
+        {
+          img_url: '../../../../../src/assets/icons/no_usage_images/user-sub3.png',
+          name: 'sabbath',
+        },
+        {
+          img_url: '../../../../../src/assets/icons/no_usage_images/user-sub2.png',
+          name: 'ALEX',
+        },
+        {
+          img_url: '../../../../../src/assets/icons/no_usage_images/user-sub1.png',
+          name: 'KJABBA',
+        },
+      ],
+    };
   },
 };
 </script>
