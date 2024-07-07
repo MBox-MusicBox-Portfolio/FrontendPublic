@@ -1,15 +1,15 @@
 export class LocalStorage {
   static JWTKey = 'JWTKey';
 
-  static SetItem(key, value) {
+  static setItem(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  static RemoveItem(key) {
+  static removeItem(key) {
     localStorage.removeItem(key);
   }
 
-  static GetItem(key) {
+  static getItem(key) {
     return localStorage.getItem(key) ?? null;
   }
 }

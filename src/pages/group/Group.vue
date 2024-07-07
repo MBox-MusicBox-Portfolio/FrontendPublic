@@ -1,28 +1,53 @@
+<script setup>
+import MusicTemplate from '../../components/templates/MusicTemplate.vue';
+import SeeAllTemplate from '../../components/templates/SeeAllTemplate.vue';
+import GroupArtistTemplate from '../../components/group/templates/GroupArtistTemplate.vue';
+import ButtonComponent_1Vue from '../../components/button/Button_1.vue';
+import CreatePost from '../../components/modals/AddPost.vue';
+import PostTemplate from '../../components/group/templates/PostTemplate.vue';
+import { useGroupStore } from '../../stores/useGroupStore.js';
+
+const images = [
+  '../../../../../src/assets/icons/no_usage_images/Rectangle 2.png',
+  '../../../../../src/assets/icons/no_usage_images/Rectangle 3.png',
+  '../../../../../src/assets/icons/no_usage_images/Rectangle 4 (1).png',
+  '../../../../../src/assets/icons/no_usage_images/Rectangle 3.png',
+  '../../../../../src/assets/icons/no_usage_images/Rectangle 3.png',
+];
+const posters = ['../../../../../src/assets/icons/no_usage_images/poster_group.png'];
+
+const groupStore = useGroupStore();
+
+const CreateNewPost = () => {
+  CreatePost.methods.openEditPostModal();
+};
+</script>
+
 <template>
   <section>
-    <ButtonComponent_1Vue name="Create new post" :flag="false" @click="CreateNewPost()" />
+    <ButtonComponent_1Vue name="Create new post" :flag="false" @click="CreateNewPost" />
     <img src="@Images/no_usage_images/bg-group.png" class="image-background" />
     <div class="d-flex mb-89 ml-20">
       <div class="group-height">
         <div class="d-flex">
           <div class="profile-card">
             <div class="d-flex justify-content-center">
-              <img :src="groupList.avatar" class="card__image" />
+              <img :src="groupStore.selectedGroup.avatar" class="card__image" />
             </div>
             <div class="text-center mt-20">
-              <p class="card__text-name">{{ groupList.name }}</p>
+              <p class="card__text-name">{{ groupStore.selectedGroup.name }}</p>
               <p class="card__text card__width">
-                {{ groupList.description }}
+                {{ groupStore.selectedGroup.description }}
               </p>
               <p class="card__text mt-20">
                 <span class="card__text-index mr-20">0</span>
                 Publication
               </p>
               <p class="card__text mt-10">
-                <span class="card__text-index mr-20">{{ groupList.countFollowers }}</span>
+                <span class="card__text-index mr-20">{{ groupStore.selectedGroup.countFollowers }}</span>
                 Followers
               </p>
-              <p class="card__text mt-10">{{ groupList.createdAt }}</p>
+              <p class="card__text mt-10">{{ groupStore.selectedGroup.createdAt }}</p>
               <!-- <button class="card__button-edit mt-20">Edit profile</button> -->
             </div>
           </div>
@@ -33,7 +58,7 @@
           <div class="d-flex w-100">
             <p class="text-anim">Artist</p>
           </div>
-          <GroupArtistTemplate :img_url="groupList.avatar" :name="groupList.name" />
+          <GroupArtistTemplate :img_url="groupStore.selectedGroup.avatar" :name="groupStore.selectedGroup.name" />
         </div>
         <!--<div class="div__add-artist d-flex justify-content-center">
           <img
@@ -98,7 +123,7 @@
       username="Lil Peep"
       avatar="../../../../../src/assets/icons/no_usage_images/user-avatar1.png"
       time="44 хв."
-      :image="image2"
+      :image="posters"
       :flag="true"
     />
     <PostTemplate
@@ -115,55 +140,3 @@
     <AddArtist />
   </section>
 </template>
-
-<script>
-import MusicTemplate from '../../components/templates/MusicTemplate.vue';
-import SeeAllTemplate from '../../components/templates/SeeAllTemplate.vue';
-import GroupArtistTemplate from '../../components/group/templates/GroupArtistTemplate.vue';
-import ButtonComponent_1Vue from '../../components/button/Button_1.vue';
-import CreatePost from '../../components/modals/AddPost.vue';
-import PostTemplate from '../../components/group/templates/PostTemplate.vue';
-import AddArtist from '../../components/modals/AddArtist.vue';
-import { GroupStore } from '../../stores/group.store.js';
-
-export default {
-  components: {
-    MusicTemplate,
-    SeeAllTemplate,
-    GroupArtistTemplate,
-    ButtonComponent_1Vue,
-    CreatePost,
-    PostTemplate,
-    AddArtist,
-  },
-  data() {
-    return {
-      images: [
-        '../../../../../src/assets/icons/no_usage_images/Rectangle 2.png',
-        '../../../../../src/assets/icons/no_usage_images/Rectangle 3.png',
-        '../../../../../src/assets/icons/no_usage_images/Rectangle 4 (1).png',
-        '../../../../../src/assets/icons/no_usage_images/Rectangle 3.png',
-        '../../../../../src/assets/icons/no_usage_images/Rectangle 3.png',
-      ],
-      image2: ['../../../../../src/assets/icons/no_usage_images/poster_group.png'],
-      groupList: [],
-    };
-  },
-  mounted() {
-    this.Group();
-  },
-  methods: {
-    CreateNewPost() {
-      CreatePost.methods.openEditPostModal();
-    },
-    AddArtist() {
-      AddArtist.methods.openArtistEditModal();
-    },
-    async Group() {
-      const gl = await GroupStore();
-      const value = await gl.Group(this.$route.params.groupId);
-      this.groupList = value[0];
-    },
-  },
-};
-</script>
