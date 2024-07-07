@@ -1,3 +1,17 @@
+<script setup>
+import { ProfileStore } from '../stores/profile.store.js';
+import PageContent from '../pages/PageContent.vue';
+import Music from '../pages/Music.vue';
+import Sidebar from '../components/sidepanels/SideBar.vue';
+import SideMenu from '../components/sidepanels/SideMenu.vue';
+import ProfileComponents from '../components/profile/Profile.vue';
+import { LocalStorage } from '../utils/LocalStorage.js';
+
+const profile = ProfileStore();
+profile.getProfileComponent(); // TODO: move this to onMounted hook, consider creating a composable
+const checkIfUserAuthenticated = () => LocalStorage.GetItem(LocalStorage.JWTKey) !== null;
+</script>
+
 <template>
   <section>
     <div class="container-fluid p-0 m-0">
@@ -7,36 +21,9 @@
         :username="profile.username"
       />
       <Sidebar />
-      <SidebarNav />
-      <CustomContent />
+      <SideMenu />
+      <PageContent />
     </div>
     <Music v-if="checkIfUserAuthenticated()" />
   </section>
 </template>
-
-<script>
-import CustomContent from '../pages/PageWrapper.vue';
-import Music from '../pages/Music/Music.vue';
-import Sidebar from '../components/sidebar/SideBar.vue';
-import SidebarNav from '../components/sidebar/SideMenu.vue';
-import ProfileComponents from '../components/profile/Profile.vue';
-import { GetItem } from '../utils/localstorage.js';
-
-export default {
-  components: { Music, Sidebar, CustomContent, SidebarNav, ProfileComponents },
-  methods: {
-    checkIfUserAuthenticated() {
-      return GetItem('JWTKey') !== null;
-    },
-  },
-};
-</script>
-
-<script setup>
-import { ProfileStore } from '../stores/profile.store.js';
-
-const profile = ProfileStore();
-profile.getProfileComponent();
-</script>
-
-<style></style>

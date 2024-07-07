@@ -3,10 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import BodyView from '../app/BodyView.vue';
 import Home from '../pages/Home.vue';
 import Search from '../pages/Search.vue';
-import GroupList from '../pages/Group/GroupList.vue';
-import Group from '../pages/Group/Group.vue';
-import CreateGroup from '../pages/Group/CreateGroup.vue';
-import Profile from '../pages/Profile/Profile.vue';
+import GroupList from '../pages/group/GroupList.vue';
+import Group from '../pages/group/Group.vue';
+import CreateGroup from '../pages/group/CreateGroup.vue';
+import Profile from '../pages/Profile.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

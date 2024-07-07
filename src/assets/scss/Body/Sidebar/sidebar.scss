@@ -3,21 +3,24 @@
 */
 
 .d-sidebar-block {
-  width: 50px;
+  width: 60px;
+  padding-top: 10px;
 
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-
-  position: fixed;
   z-index: $ui-index-4;
 
   background: $gray-light-bl-color;
-
   transition: .3s ease-out;
 
-  &:hover {
+  .button-image-link-center {
+    padding-left: 4px;
+  }
+
+  &_expanded {
     transition: .5s ease-out;
     z-index: $ui-index-6;
     width: 140px;
@@ -25,7 +28,6 @@
 }
 
 .sidebar-navigation-block {
-  margin-top: 60px;
   text-wrap: nowrap;
 
   .sidebar-navigation-block_item {
@@ -34,7 +36,6 @@
     .button-image-link {
       background: transparent;
       border: 0;
-      min-width: 100%;
 
       .button__image {
         width: 1rem;
