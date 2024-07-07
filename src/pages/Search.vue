@@ -11,7 +11,7 @@
             name_info="Taylor Swift, The Weekend, Ed Sheeran, Lana Del Rey, Arian..."
             img_url="../../../../src/assets/icons/no_usage_images/music6.png"
           />
-          <UserTemplate img_url="../../../../src/assets/icons/no_usage_images/user-avatar2.png" name="Parfeniuk" />
+          <UserTemplate img_url="../../../../src/assets/icons/no_usage_images/user-avatar2.png" name="Name" />
           <MusicTemplate
             flag="music"
             name="AM"
@@ -31,7 +31,7 @@
           <p class="text-search-genres mb-3">Genres</p>
         </div>
         <div class="d-flex flex-wrap">
-          <div v-for="item in testGenres" :key="item">
+          <div v-for="item in genres" :key="item">
             <GenresTemplateVue :color="item.color" :name="item.name" />
           </div>
         </div>
@@ -57,7 +57,7 @@ export default {
   },
   data() {
     return {
-      testGenres: [
+      genres: [
         {
           name: 'Podcast',
           color: '#6083F2',

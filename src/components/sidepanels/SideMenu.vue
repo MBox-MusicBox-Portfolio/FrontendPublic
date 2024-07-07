@@ -1,10 +1,10 @@
 <template>
   <section>
     <div class="d-sidebar-library">
-      <div class="sidebar-logotype" data-aos="fade-down" data-aos-delay="150">
+      <div class="sidebar-logotype">
         <img src="../../assets/icons/mbox_logo.png" class="logotype__image" />
       </div>
-      <div class="navigation-block" data-aos="fade-down" data-aos-delay="150">
+      <div class="navigation-block">
         <div class="navigation__library d-flex align-items-center">
           <img class="library__image" src="../../assets/icons/mbox_audio_library.png" />
           <p class="library__text">My Library</p>

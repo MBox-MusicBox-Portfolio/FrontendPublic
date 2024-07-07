@@ -7,23 +7,23 @@
         :username="profile.username"
       />
       <Sidebar />
-      <SidebarNav />
-      <CustomContent />
+      <SideMenu />
+      <PageContent />
     </div>
     <Music v-if="checkIfUserAuthenticated()" />
   </section>
 </template>
 
 <script>
-import CustomContent from '../pages/PageWrapper.vue';
-import Music from '../pages/Music/Music.vue';
-import Sidebar from '../components/sidebar/SideBar.vue';
-import SidebarNav from '../components/sidebar/SideMenu.vue';
+import PageContent from '../pages/PageContent.vue';
+import Music from '../pages/Music.vue';
+import Sidebar from '../components/sidepanels/SideBar.vue';
+import SideMenu from '../components/sidepanels/SideMenu.vue';
 import ProfileComponents from '../components/profile/Profile.vue';
 import { GetItem } from '../utils/localstorage.js';
 
 export default {
-  components: { Music, Sidebar, CustomContent, SidebarNav, ProfileComponents },
+  components: { Music, Sidebar, PageContent, SideMenu, ProfileComponents },
   methods: {
     checkIfUserAuthenticated() {
       return GetItem('JWTKey') !== null;

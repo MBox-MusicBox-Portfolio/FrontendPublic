@@ -1,6 +1,6 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-import SourceJson from '../jsons/Source.json';
+import SourceJson from '../assets/jsons/Source.json';
 
 function formatHttpError(err) {
   return `Axios Error: ${err}`;

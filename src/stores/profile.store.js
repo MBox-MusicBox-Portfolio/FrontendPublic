@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { decodeJwt } from '../utils/axios.js';
 import { GetItem } from '../utils/localstorage.js';
 
-export const ProfileStore = defineStore('', {
+export const ProfileStore = defineStore('profile', {
   state: () => {
     return {
       username: String,
