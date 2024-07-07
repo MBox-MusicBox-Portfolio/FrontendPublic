@@ -1,12 +1,16 @@
 import { defineStore } from 'pinia';
 import { HttpClient } from '../utils/HttpClient.js';
 import { useAuthStore } from './useAuthStore.js';
+import { computed, onMounted, ref } from 'vue';
 
 const DEFAULT_PAGE_SIZE = 5;
 
 export const useGroupStore = defineStore('group-store', () => {
   const auth = useAuthStore();
   const user = auth.user;
+
+  const groups = ref([]);
+  const selectedGroup = computed(() => groups.value.at(0));
 
   const joinGroupList = async () => {
     if (user) {
@@ -24,33 +28,52 @@ export const useGroupStore = defineStore('group-store', () => {
       await HttpClient.openUserGroup(user.Id);
     }
   };
-  const getGroupList = async (id) => {
-    const response = await HttpClient.getGroupList(1, 5);
-    const groupsResponse = response.data.value.at(0);
-
-    const groups = [];
+  const getGroup = async (id) => {
+    const response = await HttpClient.getGroup(id);
+    const groupResponse = response.data.value;
+    groups.value.push({
+      id: groupResponse.id,
+      name: groupResponse.name,
+      avatar: groupResponse.avatar,
+      producer: groupResponse.producer,
+      description: groupResponse.fullInfo,
+      countFollowers: groupResponse.countFollowers,
+      createdAt: groupResponse.createdAt,
+    });
+  };
+  const getGroupList = async () => {
+    const response = await HttpClient.getGroupList();
+    const groupsResponse = response.data.value;
 
     for (const groupResponse of groupsResponse) {
-      if (groupResponse.id === id) {
-        groups.push({
-          id: groupResponse.id,
-          name: groupResponse.name,
-          avatar: groupResponse.avatar,
-          producer: groupResponse.producer,
-          description: groupResponse.fullInfo,
-          countFollowers: groupResponse.countFollowers,
-          createdAt: groupResponse.createdAt,
-        });
-      }
+      groups.value.push({
+        id: groupResponse.id,
+        name: groupResponse.name,
+        avatar: groupResponse.avatar,
+        producer: groupResponse.producer,
+        description: groupResponse.fullInfo,
+        countFollowers: groupResponse.countFollowers,
+        createdAt: groupResponse.createdAt,
+      });
     }
-
-    return groups;
   };
 
+  onMounted(async () => {
+    const groupIdParam = this.$route.params.groupId;
+
+    if (groupIdParam) {
+      await getGroup(this.$route.params.groupId);
+    } else {
+      await getGroupList();
+    }
+  });
+
   return {
-    getGroupList,
+    getGroup,
     joinGroup,
     openGroup,
     joinGroupList,
+    groups,
+    selectedGroup,
   };
 });

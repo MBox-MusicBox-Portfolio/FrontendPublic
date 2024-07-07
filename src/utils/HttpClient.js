@@ -58,6 +58,14 @@ export class HttpClient {
     }
   }
 
+  static async getGroup(id) {
+    try {
+      return await axios.get(SourceJson.Bands.GetBands + '?Id=' + id);
+    } catch (err) {
+      return formatHttpError(err);
+    }
+  }
+
   /**
    * Присоединение пользователя к группе
    * @param user
@@ -94,7 +102,9 @@ export class HttpClient {
    */
   static async getJoinedGroups(user, index, size) {
     try {
-      return await axios.get(SourceJson.GetUserBands + user + '/user/bands?PageIndex=' + index + '&PageSize=' + size);
+      return await axios.get(
+        SourceJson.Bands.GetUserBands + user + '/user/bands?PageIndex=' + index + '&PageSize=' + size,
+      );
     } catch (err) {
       return formatHttpError(err);
     }
