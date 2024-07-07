@@ -73,7 +73,7 @@ const suggestions = [
 
 const authModalSwitch = useAuthModal();
 
-const checkIfUserIsAuthenticated = () => LocalStorage.GetItem(LocalStorage.JWTKey) !== null;
+const checkIfUserIsAuthenticated = () => LocalStorage.getItem(LocalStorage.JWTKey) !== null;
 const openAuthModal = () => authModalSwitch.openSignInModal();
 </script>
 

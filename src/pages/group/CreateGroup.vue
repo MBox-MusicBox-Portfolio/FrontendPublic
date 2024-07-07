@@ -31,9 +31,9 @@ export default {};
 
 <script setup>
 import { Form, Field } from 'vee-validate';
-import { GroupStore } from '../../stores/group.store.js';
+import { useGroupStore } from '../../stores/useGroupStore.js';
 
-const gs = GroupStore();
+const gs = useGroupStore();
 async function onSubmit(data) {
   gs.id = 'asd';
   gs.CreateGroup(data);

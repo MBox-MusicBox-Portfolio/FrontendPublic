@@ -1,14 +1,14 @@
 <script setup>
 import SignIn from '../modals/SignIn.vue';
 import { LocalStorage } from '../../utils/LocalStorage.js';
-import { useAppStore } from '../../stores/app.store.js';
+import { useAppStore } from '../../stores/useAppStore.js';
 import { useAuthModal } from '../../composables/useAuthModal.js';
 
 const app = useAppStore();
 const authModal = useAuthModal();
 
 const checkIfUserAuthenticated = () => {
-  return LocalStorage.GetItem('JWTKey') !== null;
+  return LocalStorage.getItem('JWTKey') !== null;
 };
 </script>
 

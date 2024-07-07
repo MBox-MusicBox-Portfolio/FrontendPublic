@@ -124,7 +124,7 @@ import ButtonComponent_1Vue from '../../components/button/Button_1.vue';
 import CreatePost from '../../components/modals/AddPost.vue';
 import PostTemplate from '../../components/group/templates/PostTemplate.vue';
 import AddArtist from '../../components/modals/AddArtist.vue';
-import { GroupStore } from '../../stores/group.store.js';
+import { useGroupStore } from '../../stores/useGroupStore.js';
 
 export default {
   components: {
@@ -160,8 +160,8 @@ export default {
       AddArtist.methods.openArtistEditModal();
     },
     async Group() {
-      const gl = await GroupStore();
-      const value = await gl.Group(this.$route.params.groupId);
+      const gl = await useGroupStore();
+      const value = await gl.getGroupList(this.$route.params.groupId);
       this.groupList = value[0];
     },
   },

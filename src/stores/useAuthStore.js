@@ -1,20 +1,21 @@
+import jwtDecode from 'jwt-decode';
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import { authenticateUser, signUpUser } from '../utils/axios.js';
+import { HttpClient } from '../utils/HttpClient.js';
 import { LocalStorage } from '../utils/LocalStorage.js';
 
 export const useAuthStore = defineStore('auth', () => {
   const errorMessage = ref(null);
-  const userToken = ref(null);
+  const user = ref(null);
 
   const signIn = async (data) => {
     try {
-      const userAuthResponse = await authenticateUser(data.email, data.password);
+      const userAuthResponse = await HttpClient.authenticateUser(data.email, data.password);
 
       if (userAuthResponse.status === 200) {
         this.errorMessage = userAuthResponse.statusText;
-        LocalStorage.SetItem(LocalStorage.JWTKey, userAuthResponse.data.token);
-        userToken.value = userAuthResponse.data.token;
+        LocalStorage.setItem(LocalStorage.JWTKey, userAuthResponse.data.token);
+        user.value = await jwtDecode(userAuthResponse.data.token);
         window.location.reload(); // TODO: use vue-router for redirection
       }
 
@@ -38,12 +39,12 @@ export const useAuthStore = defineStore('auth', () => {
 
   const signUp = async (data) => {
     try {
-      const userRegisterResponse = await signUpUser(data.name, data.email, data.password);
+      const userRegisterResponse = await HttpClient.signUpUser(data.name, data.email, data.password);
 
       if (userRegisterResponse.status === 201) {
         this.errorMessage = userRegisterResponse.statusText;
-        LocalStorage.SetItem(LocalStorage.JWTKey, userRegisterResponse.data.token);
-        userToken.value = userRegisterResponse.data.token;
+        LocalStorage.setItem(LocalStorage.JWTKey, userRegisterResponse.data.token);
+        user.value = await jwtDecode(userRegisterResponse.data.token);
         window.location.reload(); // TODO: use vue-router for redirection
       }
     } catch (error) {
@@ -61,5 +62,5 @@ export const useAuthStore = defineStore('auth', () => {
     }
   };
 
-  return { errorMessage, signUp, signIn };
+  return { errorMessage, user, signUp, signIn };
 });

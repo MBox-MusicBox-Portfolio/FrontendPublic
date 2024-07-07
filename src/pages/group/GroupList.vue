@@ -22,7 +22,7 @@
 import SearchComponent from '../../components/input/Search.vue';
 import GroupTemplate from '../../components/group/templates/GroupTemplate.vue';
 import ButtonComponent_1 from '../../components/button/Button_1.vue';
-import { GroupStore } from '../../stores/group.store.js';
+import { useGroupStore } from '../../stores/useGroupStore.js';
 
 export default {
   components: {
@@ -40,13 +40,13 @@ export default {
   },
   methods: {
     async FethGroupList() {
-      const gs = GroupStore();
-      let value = await gs.AllGroupList();
+      const gs = useGroupStore();
+      let value = await gs.getAllGroupList();
       this.groupList = value;
     },
     async JoinGroup(groupId) {
-      const groupStore = GroupStore();
-      await groupStore.Join(groupId);
+      const groupStore = useGroupStore();
+      await groupStore.joinGroup(groupId);
       this.$router.push({
         name: 'group',
         params: { groupId: groupId },
