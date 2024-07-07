@@ -3,12 +3,12 @@ import jwt_decode from 'jwt-decode';
 import SourceJson from '../assets/jsons/Source.json';
 
 function formatHttpError(err) {
+  // TODO: consider get rid of it and on http error show toast with error details
   return `Axios Error: ${err}`;
 }
 
 export async function decodeJwt(token) {
-  const decoded = jwt_decode(token);
-  return JSON.stringify(decoded);
+  return JSON.stringify(jwt_decode(token)); // TODO: why stringify ?
 }
 
 /**
@@ -18,7 +18,7 @@ export async function decodeJwt(token) {
  * @param password
  * @returns
  */
-export async function UserRegister(username, email, password) {
+export async function signUpUser(username, email, password) {
   try {
     return await axios // new Date
       .post(SourceJson.Auth.register, {
@@ -37,7 +37,7 @@ export async function UserRegister(username, email, password) {
  * @param password
  * @returns
  */
-export async function UserAuth(email, password) {
+export async function authenticateUser(email, password) {
   try {
     return await axios.post(SourceJson.Auth.login, {
       Email: email,
@@ -54,7 +54,7 @@ export async function UserAuth(email, password) {
  * @param size
  * @returns
  */
-export async function GroupList(index, size) {
+export async function getGroupList(index, size) {
   try {
     return await axios.get(SourceJson.Bands.GetBands + '?PageIndex=' + index + '&PageSize=' + size);
   } catch (err) {
@@ -67,7 +67,7 @@ export async function GroupList(index, size) {
  * @param group
  * @returns
  */
-export async function Join(user, group) {
+export async function joinUserToGroup(user, group) {
   try {
     return await axios.put(SourceJson.Bands.JoinBands + '/' + group + '/user/' + user);
   } catch (err) {
@@ -80,7 +80,7 @@ export async function Join(user, group) {
  * @param user
  * @returns
  */
-export async function Open(user) {
+export async function openUserGroup(user) {
   try {
     return await axios.get(SourceJson.Bands.GetUserBands + '/' + user + '/user/bands');
   } catch (err) {
@@ -95,7 +95,7 @@ export async function Open(user) {
  * @param size
  * @returns
  */
-export async function MyJoinGroup(user, index, size) {
+export async function getJoinedGroups(user, index, size) {
   try {
     return await axios.get(SourceJson.GetUserBands + user + '/user/bands?PageIndex=' + index + '&PageSize=' + size);
   } catch (err) {

@@ -1,3 +1,16 @@
+<script>
+import { Modal } from 'bootstrap';
+
+export default {
+  methods: {
+    openEditPostModal() {
+      const modalShow = new Modal(document.getElementById('modal-edit'), {});
+      modalShow.show();
+    },
+  },
+};
+</script>
+
 <template>
   <div id="modal-edit" class="modal">
     <div class="modal-dialog">
@@ -5,10 +18,10 @@
         <form class="b_post-form">
           <div class="mb-1 d-flex justify-content-between">
             <p class="post__text-create">Create new post</p>
-            <img src="@Images/mbox_exit.png" class="post__image-exit" />
+            <img src="@Images/mbox_exit.png" class="post__image-exit" alt="" />
           </div>
           <div class="d-flex align-items-center">
-            <img src="@Images/no_usage_images/user-avatar1.png" class="post__image-avatar" />
+            <img src="@Images/no_usage_images/user-avatar1.png" class="post__image-avatar" alt="" />
             <p class="post__text-name">Lil Peep</p>
           </div>
           <div class="post__input ml-70">
@@ -22,9 +35,9 @@
           </div>
           <div class="ml-70 d-flex justify-content-between">
             <div>
-              <img class="post__image" src="@Images/mbox_add_image.png" />
-              <img class="post__image" src="@Images/mbox_gif.png" />
-              <img class="post__image" src="@Images/mbox_add_emoji.png" />
+              <img class="post__image" src="@Images/mbox_add_image.png" alt="" />
+              <img class="post__image" src="@Images/mbox_gif.png" alt="" />
+              <img class="post__image" src="@Images/mbox_add_emoji.png" alt="" />
             </div>
             <button class="post__button" type="submit">Create</button>
           </div>
@@ -33,18 +46,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import { Modal } from 'bootstrap';
-
-export default {
-  methods: {
-    OpenModal() {
-      const modalShow = new Modal(document.getElementById('modal-edit'), {});
-      modalShow.show();
-    },
-  },
-};
-</script>
-
-<script></script>

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
-import { decodeJwt, GroupList, Join, MyJoinGroup, Open } from '../utils/axios.js';
-import { GetItem } from '../utils/localstorage.js';
+import { decodeJwt, getGroupList, joinUserToGroup, getJoinedGroups, openUserGroup } from '../utils/axios.js';
+import { LocalStorage } from '../utils/LocalStorage.js';
 
 export const GroupStore = defineStore('group-store', {
   actions: {
@@ -9,7 +9,7 @@ export const GroupStore = defineStore('group-store', {
      * @returns
      */
     async AllGroupList() {
-      const gl = await GroupList(1, 5);
+      const gl = await getGroupList(1, 5);
       return gl.data.value[0];
     },
 
@@ -18,11 +18,11 @@ export const GroupStore = defineStore('group-store', {
      * @returns
      */
     async JoinGroupList() {
-      if (GetItem('JWTKey')) {
-        const decode = await decodeJwt(GetItem('JWTKey'));
+      if (LocalStorage.GetItem('JWTKey')) {
+        const decode = await decodeJwt(LocalStorage.GetItem('JWTKey'));
         const decode_parse = JSON.parse(decode);
 
-        const mjg = await MyJoinGroup(decode_parse.Id, 1, 5);
+        const mjg = await getJoinedGroups(decode_parse.Id, 1, 5);
         return mjg.data.value[0];
       }
     },
@@ -32,11 +32,11 @@ export const GroupStore = defineStore('group-store', {
      * @param id
      */
     async Join(id) {
-      if (GetItem('JWTKey')) {
-        const decode = await decodeJwt(GetItem('JWTKey'));
+      if (LocalStorage.GetItem('JWTKey')) {
+        const decode = await decodeJwt(LocalStorage.GetItem('JWTKey'));
         const decode_parse = JSON.parse(decode);
 
-        await Join(decode_parse.Id, id);
+        await joinUserToGroup(decode_parse.Id, id);
       }
     },
 
@@ -44,11 +44,11 @@ export const GroupStore = defineStore('group-store', {
      *
      */
     async Open() {
-      if (GetItem('JWTKey')) {
-        const decode = await decodeJwt(GetItem('JWTKey'));
+      if (LocalStorage.GetItem('JWTKey')) {
+        const decode = await decodeJwt(LocalStorage.GetItem('JWTKey'));
         const decode_parse = JSON.parse(decode);
 
-        await Open(decode_parse.Id);
+        await openUserGroup(decode_parse.Id);
       }
     },
 
@@ -58,7 +58,7 @@ export const GroupStore = defineStore('group-store', {
      * @returns
      */
     async Group(id) {
-      const response = await GroupList(1, 5);
+      const response = await getGroupList(1, 5);
       const groupsResponse = response.data.value.at(0);
 
       const groups = [];

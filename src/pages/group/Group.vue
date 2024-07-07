@@ -154,10 +154,10 @@ export default {
   },
   methods: {
     CreateNewPost() {
-      CreatePost.methods.OpenModal();
+      CreatePost.methods.openEditPostModal();
     },
     AddArtist() {
-      AddArtist.methods.OpenModal();
+      AddArtist.methods.openArtistEditModal();
     },
     async Group() {
       const gl = await GroupStore();

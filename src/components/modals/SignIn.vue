@@ -1,54 +1,32 @@
 <script setup>
 import { Form, Field } from 'vee-validate';
-import { AuthStore } from '../../stores/auth.store.js';
+import { useAuthStore } from '../../stores/useAuthStore.js';
 import { signInValidationSchema, signUpValidationSchema } from '../../validations/index.js';
+import { AuthModalTypes, useAuthModal } from '../../composables/useAuthModal.js';
 
-const auth = AuthStore();
+const auth = useAuthStore();
+const authModal = useAuthModal();
 
 async function onSignUp(data) {
-  return auth.SignUp(data);
+  return auth.signUp(data);
 }
 
 async function onSignIn(data) {
-  return auth.SignIn(data);
+  return auth.signIn(data);
 }
-</script>
-
-<script>
-import { Modal } from 'bootstrap';
-
-export default {
-  data() {
-    return {
-      isSignIn: Boolean,
-    };
-  },
-  methods: {
-    OpenModal(isSignIn) {
-      this.isSignIn = isSignIn;
-      const modal = new Modal(document.getElementById('modal-sign'), {
-        backdrop: true,
-      });
-      modal.show();
-    },
-    SetSign(isSignIn) {
-      this.isSignIn = isSignIn;
-    },
-  },
-};
 </script>
 
 <template>
   <div id="modal-sign" class="modal">
     <div class="modal-dialog modal-xl modal-margin d-flex justify-content-center">
       <!-- Sign In -->
-      <div v-if="isSignIn === true" class="d-container">
+      <div v-if="authModal.authModalType.value === AuthModalTypes.SignIn" class="d-container">
         <div class="container__form" data-aos="fade-left" data-aos-delay="150">
           <h4 class="form__text-create">Sign In to MusicBox</h4>
           <div>
             <Form v-slot="{ errors, isSubmitting }" :validation-schema="signInValidationSchema" @submit="onSignIn">
               <div class="form-group">
-                <img src="@Images/mbox_email.png" class="form__image" />
+                <img src="@Images/mbox_email.png" class="form__image" alt="" />
                 <Field
                   name="email"
                   type="email"
@@ -59,7 +37,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.email }}</div>
               </div>
               <div class="form-group mt-10">
-                <img src="@Images/mbox_password.png" class="form__image" />
+                <img src="@Images/mbox_password.png" class="form__image" alt="" />
                 <Field
                   name="password"
                   type="password"
@@ -80,7 +58,7 @@ export default {
           </div>
         </div>
         <div class="container_image-welcome">
-          <img src="@Images/mbox_background_1.png" class="image__background" />
+          <img src="@Images/mbox_background_1.png" class="image__background" alt="" />
           <div class="container__content text-center">
             <div class="d-flex justify-content-center">
               <div class="content__width">
@@ -91,15 +69,15 @@ export default {
               </div>
             </div>
             <div>
-              <button class="content__button text-white" @click="SetSign(false)">Sign Up</button>
+              <button class="content__button text-white" @click="authModal.openSignUpModal">Sign Up</button>
             </div>
           </div>
         </div>
       </div>
       <!-- Sign Up -->
-      <div v-else class="d-container">
+      <div v-else-if="authModal.authModalType.value === AuthModalTypes.SignUp" class="d-container">
         <div class="container_image-welcome">
-          <img src="@Images/mbox_background.png" class="image__background image__background-left" />
+          <img src="@Images/mbox_background.png" class="image__background image__background-left" alt="" />
           <div class="container__content text-center">
             <div class="d-flex justify-content-center">
               <div class="content__width">
@@ -108,7 +86,7 @@ export default {
               </div>
             </div>
             <div>
-              <button class="content__button" @click="SetSign(true)">Sign In</button>
+              <button class="content__button" @click="authModal.openSignInModal()">Sign In</button>
             </div>
           </div>
         </div>
@@ -117,7 +95,7 @@ export default {
           <div>
             <Form v-slot="{ errors, isSubmitting }" :validation-schema="signUpValidationSchema" @submit="onSignUp">
               <div class="form-group">
-                <img src="@Images/mbox_account.png" class="form__image" />
+                <img src="@Images/mbox_account.png" class="form__image" alt="" />
                 <Field
                   name="name"
                   type="text"
@@ -128,7 +106,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.name }}</div>
               </div>
               <div class="form-group mt-10">
-                <img src="@Images/mbox_email.png" class="form__image" />
+                <img src="@Images/mbox_email.png" class="form__image" alt="" />
                 <Field
                   name="email"
                   type="email"
@@ -139,7 +117,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.email }}</div>
               </div>
               <div class="form-group mt-10">
-                <img src="@Images/mbox_calendar.png" class="form__image form__image-birthday" />
+                <img src="@Images/mbox_calendar.png" class="form__image form__image-birthday" alt="" />
                 <Field
                   name="birthday"
                   type="text"
@@ -150,7 +128,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.birthday }}</div>
               </div>
               <div class="form-group mt-10">
-                <img src="@Images/mbox_password.png" class="form__image" />
+                <img src="@Images/mbox_password.png" class="form__image" alt="" />
                 <Field
                   name="password"
                   type="password"
@@ -161,7 +139,7 @@ export default {
                 <div class="invalid-feedback">{{ errors.password }}</div>
               </div>
               <div class="form-group mt-10">
-                <img src="@Images/mbox_password.png" class="form__image" />
+                <img src="@Images/mbox_password.png" class="form__image" alt="" />
                 <Field
                   name="retypePassword"
                   type="password"

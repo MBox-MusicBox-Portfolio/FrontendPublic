@@ -1,16 +1,14 @@
 <script setup>
 import SignIn from '../modals/SignIn.vue';
-import { GetItem } from '../../utils/localstorage.js';
+import { LocalStorage } from '../../utils/LocalStorage.js';
 import { useAppStore } from '../../stores/app.store.js';
+import { useAuthModal } from '../../composables/useAuthModal.js';
 
 const app = useAppStore();
+const authModal = useAuthModal();
 
 const checkIfUserAuthenticated = () => {
-  return GetItem('JWTKey') !== null;
-};
-
-const openModal = () => {
-  SignIn.methods.OpenModal();
+  return LocalStorage.GetItem('JWTKey') !== null;
 };
 </script>
 
@@ -54,7 +52,7 @@ const openModal = () => {
           </router-link>
         </div>
         <div v-else class="sidebar-navigation-block_item">
-          <button class="button-image-link m-0 d-flex" @click="openModal">
+          <button class="button-image-link m-0 d-flex" @click="authModal.openSignInModal">
             <img class="button__image" src="../../assets/icons/mbox_account_error.png" alt="" />
             <span class="button__text ms-2">Sign In</span>
           </button>
